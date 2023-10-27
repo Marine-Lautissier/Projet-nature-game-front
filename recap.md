@@ -31,3 +31,7 @@ Store :
 - actions,
 - reducers,
 - thunks.
+
+Reducers :
+- wiki,
+- quizz.
