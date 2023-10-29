@@ -15,13 +15,14 @@ Branches :
 Composants :
 
 - App :
-- AppHeader :
+- NavBar :
 - Logo,
 - HomePage -> TopPlayers ; RandomArticle,
 - Wiki -> WikiCategory ; WikiSubCategory ; WikiArticle,
 - Game -> Quizz,
 - Registration,
 - LoginForm,
+  
 - AppFooter : Contact ; LegalNotice ; TermsOfUse,
   
 - Profile : UpdateAvatar ; UpdateMail ; UpdatePassword ; DeleteAccount.
