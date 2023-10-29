@@ -4,8 +4,9 @@ Branches :
 
 -> develop :
 - feature/home-page (page d'accueil),
-- feature/wiki (dont catégorie, sous-catégorie, article),
-- feature/game (quizz),
+- feature/navbar,
+- feature/wiki-page (dont catégorie, sous-catégorie, article),
+- feature/game-page (quizz),
 - feature/profile (dont connexion/déconnexion/création/modification),
 - feature/contact (formulaire de contact),
 - feature/legal-notice_terms-of-use.
@@ -18,8 +19,9 @@ Composants :
 - NavBar :
 - Logo,
 - HomePage -> TopPlayers ; RandomArticle,
-- Wiki -> WikiCategory ; WikiSubCategory ; WikiArticle,
-- Game -> Quizz,
+- WikiPage -> WikiCategory ; WikiSubCategory ; WikiArticle,
+- GamePage -> Quizz,
+- UserProfileMenu :
 - Registration,
 - LoginForm,
   
