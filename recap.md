@@ -3,7 +3,7 @@ Branches :
 -> master,
 
 -> develop :
-- feature/home (page d'accueil),
+- feature/home-page (page d'accueil),
 - feature/wiki (dont catégorie, sous-catégorie, article),
 - feature/game (quizz),
 - feature/profile (dont connexion/déconnexion/création/modification),
@@ -14,9 +14,10 @@ Branches :
 
 Composants :
 
-- App -> Home ; TopPlayers ; Article,
+- App :
 - AppHeader :
 - Logo,
+- HomePage -> TopPlayers ; RandomArticle,
 - Wiki -> WikiCategory ; WikiSubCategory ; WikiArticle,
 - Game -> Quizz,
 - Registration,
