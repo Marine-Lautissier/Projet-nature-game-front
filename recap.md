@@ -24,10 +24,9 @@ Composants :
 - UserProfileMenu :
 - Registration,
 - LoginForm,
+- Profile : UpdateAvatar ; UpdateMail ; UpdatePassword ; DeleteAccount.
   
 - AppFooter : Contact ; LegalNotice ; TermsOfUse,
-  
-- Profile : UpdateAvatar ; UpdateMail ; UpdatePassword ; DeleteAccount.
 
 Hooks : useDispatch et useSelector (pour les typer).
 

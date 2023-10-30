@@ -1,3 +1,7 @@
+import UserProfileMenu from '../UserProfileMenu/UserProfileMenu';
+
+import logo from '../../assets/logo-site.png';
+
 import './NavBar.scss';
 
 import { NavLink } from 'react-router-dom';
@@ -5,9 +9,9 @@ import { NavLink } from 'react-router-dom';
 function NavBar() {
   return (
     <nav className="navbar">
-      {/* <div className="navbar-logo">
-        <img src="logo.png" alt="Logo" />
-      </div> */}
+      <div className="navbar-logo">
+        <img src={logo} alt="Logo" />
+      </div>
       <ul className="navbar-links">
         <li>
           <NavLink to="/">Accueil</NavLink>
@@ -19,9 +23,9 @@ function NavBar() {
           <NavLink to="/wiki">Wiki</NavLink>
         </li>
       </ul>
-      {/* <div className="navbar-user-dropdown">
+      <div className="navbar-user-profile-menu">
         <UserProfileMenu />
-      </div> */}
+      </div>
     </nav>
   );
 }

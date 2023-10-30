@@ -8,7 +8,7 @@ function RandomArticle() {
     <div className='article-day'>
       <h3>Article du jour</h3>
       <h2>La colombe</h2>
-      <img src={logo} alt="image" />
+      <img src={logo} alt="Logo" />
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio facere
         doloremque soluta quasi dolorem ipsum perspiciatis adipisci
