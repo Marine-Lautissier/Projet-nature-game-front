@@ -3,5 +3,14 @@
   align-items: center;
   padding: 2em;
   border-bottom: 2px solid black;
-  justify-content: space-between;
+}
+
+.navbar .navbar-links {
+  display: flex;
+  justify-content: center;
+  width: 100%
+}
+
+.navbar .navbar-links li {
+  padding-right: 2rem;
 }

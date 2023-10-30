@@ -1,6 +1,9 @@
+import './HomePage.scss';
+
 import RandomArticle from './RandomArticle/RandomArticle';
 import TopPlayers from './TopPlayers/TopPlayers';
 
+// Fonction qui représente la page principale d'accueil:
 function HomePage() {
   return (
     <div>

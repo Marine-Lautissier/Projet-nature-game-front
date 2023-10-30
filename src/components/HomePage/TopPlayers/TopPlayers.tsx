@@ -1,7 +1,10 @@
+import './TopPlayers.scss';
+
+// Fonction qui affiche le top 10 des joueurs dans la page principale d'accueil:
 function TopPlayers() {
   return (
-    <div>
-      <h2>Top 10joueurs</h2>
+    <div className='list-top-players'>
+      <h2>Top 10 joueurs</h2>
       <ul>
         <li>Nicolas</li>
         <li>Rosa</li>
