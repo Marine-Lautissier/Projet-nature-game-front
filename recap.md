@@ -17,9 +17,8 @@ Composants :
 
 - App :
 - NavBar :
-- Logo,
 - HomePage -> TopPlayers ; RandomArticle,
-- WikiPage -> WikiCategory ; WikiSubCategory ; WikiArticle,
+- WikiPage -> CategoryList ; SubCategoryList ; WikiArticle,
 - GamePage -> Quizz,
 - UserProfileMenu :
 - Registration,

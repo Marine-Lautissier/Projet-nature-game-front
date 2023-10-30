@@ -1,10 +1,10 @@
+import { NavLink } from 'react-router-dom';
+
 import UserProfileMenu from '../UserProfileMenu/UserProfileMenu';
 
 import logo from '../../assets/logo-site.png';
 
 import './NavBar.scss';
-
-import { NavLink } from 'react-router-dom';
 
 function NavBar() {
   return (

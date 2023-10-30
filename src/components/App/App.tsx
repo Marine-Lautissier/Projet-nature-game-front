@@ -1,12 +1,23 @@
+import { Route, Routes } from 'react-router-dom';
 import HomePage from '../HomePage/HomePage';
 import NavBar from '../NavBar/NavBar';
 import './App.scss';
+import WikiPage from '../WikiPage/WikiPage';
+import CategoryList from '../WikiPage/CategoryList/CategoryList';
+import SubCategoryList from '../WikiPage/SubCategoryList/SubCategoryList';
+import WikiArticle from '../WikiPage/WikiArticle/WikiArticle';
 
 function App() {
   return (
     <div className="App">
       <NavBar />
-      <HomePage />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/wiki" element={<WikiPage />} />
+        <Route path="/wiki/categorie/{id}" element={<CategoryList />} />
+        <Route path="/wiki/sous-categorie/{id}" element={<SubCategoryList />} />
+        <Route path="/wiki/article/{id}" element={<WikiArticle />} />
+      </Routes>
     </div>
   );
 }
