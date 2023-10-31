@@ -8,8 +8,7 @@ Branches :
 - feature/wiki-page (dont catégorie, sous-catégorie, article),
 - feature/game-page (quizz),
 - feature/profile (dont connexion/déconnexion/création/modification),
-- feature/contact (formulaire de contact),
-- feature/legal-notice_terms-of-use.
+- feature/footer (dont contact, mentions légales et conditions d'utilisations).
 
 
 
@@ -17,18 +16,17 @@ Composants :
 
 - App :
 - NavBar :
-- Logo,
 - HomePage -> TopPlayers ; RandomArticle,
-- WikiPage -> WikiCategory ; WikiSubCategory ; WikiArticle,
+- WikiPage -> CategoryList ; SubCategoryList ; WikiArticle,
 - GamePage -> Quizz,
 - UserProfileMenu :
 - Registration,
 - LoginForm,
 - Profile : UpdateAvatar ; UpdateMail ; UpdatePassword ; DeleteAccount.
   
-- AppFooter : Contact ; LegalNotice ; TermsOfUse,
+- Footer : Contact ; LegalNotice ; TermsOfUse,
 
-Hooks : useDispatch et useSelector (pour les typer).
+Hooks : useDispatch et useSelector.
 
 Store :
 - actions,
@@ -36,5 +34,6 @@ Store :
 - thunks.
 
 Reducers :
+- home,
 - wiki,
 - quizz.
