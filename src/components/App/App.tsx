@@ -1,26 +1,31 @@
-import logo from '../../assets/logo.svg';
-
+import { Route, Routes } from 'react-router-dom';
+import HomePage from '../HomePage/HomePage';
+import NavBar from '../NavBar/NavBar';
 import './App.scss';
+import WikiPage from '../WikiPage/WikiPage';
+import CategoryList from '../WikiPage/CategoryList/CategoryList';
+import SubCategoryList from '../WikiPage/SubCategoryList/SubCategoryList';
+import WikiArticle from '../WikiPage/WikiArticle/WikiArticle';
+import Footer from '../Footer/Footer';
+import TermsOfUse from '../Footer/TermsOfUse/TermsOfUse';
+import LegalNotice from '../Footer/LegalNotice/LegalNotice';
+import Contact from '../Footer/Contact/Contact';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-
-        <p>
-          Edit <code>src/components/App/App.jsx</code> and save to reload.
-        </p>
-
-        <a
-          className="App-link"
-          href="https://react.dev/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/wiki" element={<WikiPage />} />
+        <Route path="/wiki/categorie/{id}" element={<CategoryList />} />
+        <Route path="/wiki/sous-categorie/{id}" element={<SubCategoryList />} />
+        <Route path="/wiki/article/{id}" element={<WikiArticle />} />
+        <Route path="/conditions-utilisations" element={<TermsOfUse />} />
+        <Route path="/mentions-legales" element={<LegalNotice />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+      <Footer />
     </div>
   );
 }
