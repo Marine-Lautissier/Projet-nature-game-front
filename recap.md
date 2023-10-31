@@ -27,7 +27,7 @@ Composants :
   
 - AppFooter : Contact ; LegalNotice ; TermsOfUse,
 
-Hooks : useDispatch et useSelector (pour les typer).
+Hooks : useDispatch et useSelector.
 
 Store :
 - actions,
