@@ -6,6 +6,10 @@ import WikiPage from '../WikiPage/WikiPage';
 import CategoryList from '../WikiPage/CategoryList/CategoryList';
 import SubCategoryList from '../WikiPage/SubCategoryList/SubCategoryList';
 import WikiArticle from '../WikiPage/WikiArticle/WikiArticle';
+import Footer from '../Footer/Footer';
+import TermsOfUse from '../Footer/TermsOfUse/TermsOfUse';
+import LegalNotice from '../Footer/LegalNotice/LegalNotice';
+import Contact from '../Footer/Contact/Contact';
 
 function App() {
   return (
@@ -17,7 +21,11 @@ function App() {
         <Route path="/wiki/categorie/{id}" element={<CategoryList />} />
         <Route path="/wiki/sous-categorie/{id}" element={<SubCategoryList />} />
         <Route path="/wiki/article/{id}" element={<WikiArticle />} />
+        <Route path="/conditions-utilisations" element={<TermsOfUse />} />
+        <Route path="/mentions-legales" element={<LegalNotice />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
+      <Footer />
     </div>
   );
 }

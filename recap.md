@@ -8,8 +8,7 @@ Branches :
 - feature/wiki-page (dont catégorie, sous-catégorie, article),
 - feature/game-page (quizz),
 - feature/profile (dont connexion/déconnexion/création/modification),
-- feature/contact (formulaire de contact),
-- feature/legal-notice_terms-of-use.
+- feature/footer (dont contact, mentions légales et conditions d'utilisations).
 
 
 
@@ -25,7 +24,7 @@ Composants :
 - LoginForm,
 - Profile : UpdateAvatar ; UpdateMail ; UpdatePassword ; DeleteAccount.
   
-- AppFooter : Contact ; LegalNotice ; TermsOfUse,
+- Footer : Contact ; LegalNotice ; TermsOfUse,
 
 Hooks : useDispatch et useSelector.
 
@@ -35,5 +34,6 @@ Store :
 - thunks.
 
 Reducers :
+- home,
 - wiki,
 - quizz.

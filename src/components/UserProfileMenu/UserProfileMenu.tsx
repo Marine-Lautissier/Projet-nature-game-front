@@ -1,6 +1,5 @@
 import './UserProfileMenu.scss';
 
-import React from 'react';
 
 function UserProfileMenu() {
   return (
