@@ -1,11 +1,7 @@
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import 'semantic-ui-css/semantic.min.css';
 import { Menu, Dropdown, Image } from 'semantic-ui-react';
-
-import UserProfileMenu from '../UserProfileMenu/UserProfileMenu';
-
 import logo from '../../assets/logo-site.png';
-
 import './NavBar.scss';
 
 function NavBar() {
@@ -23,40 +19,14 @@ function NavBar() {
         <Menu vertical>
           <Dropdown item text="Menu">
             <Dropdown.Menu>
-              <Dropdown.Item>Se connecter</Dropdown.Item>
-              <Dropdown.Item>S'inscrire</Dropdown.Item>
-              <Dropdown.Item>Accéder au profil</Dropdown.Item>
+              <Dropdown.Item as={Link} to="/connexion">Se connecter</Dropdown.Item>
+              <Dropdown.Item as={Link} to="/inscription">S'inscrire</Dropdown.Item>
+              <Dropdown.Item as={Link} to="/profil">Accéder au profil</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
         </Menu>
       </Menu.Menu>
     </Menu>
-
-
-
-
-
-
-
-    // <nav className="navbar">
-    //   <div className="navbar-logo">
-    //     <img src={logo} alt="Logo" />
-    //   </div>
-    //   <ul className="navbar-links">
-    //     <li>
-    //       <NavLink to="/">Accueil</NavLink>
-    //     </li>
-    //     <li>
-    //       <NavLink to="/game">Jeux</NavLink>
-    //     </li>
-    //     <li>
-    //       <NavLink to="/wiki">Wiki</NavLink>
-    //     </li>
-    //   </ul>
-    //   <div className="navbar-user-profile-menu">
-    //     <UserProfileMenu />
-    //   </div>
-    // </nav>
   );
 }
 
