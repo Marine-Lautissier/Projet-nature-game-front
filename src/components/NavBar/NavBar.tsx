@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import 'semantic-ui-css/semantic.min.css';
-import { Input, Menu, Dropdown, Image } from 'semantic-ui-react';
+import { Menu, Dropdown, Image } from 'semantic-ui-react';
 
 import UserProfileMenu from '../UserProfileMenu/UserProfileMenu';
 
@@ -16,9 +16,9 @@ function NavBar() {
   return (
     <Menu secondary>
       <Image src={logo} style={logoStyle} />
-      <Menu.Item name="Accueil" />
-      <Menu.Item name="Jeux" />
-      <Menu.Item name="Wiki" />
+      <Menu.Item name="Accueil" as={NavLink} to="/" />
+      <Menu.Item name="Jeux" as={NavLink} to="/game" />
+      <Menu.Item name="Wiki" as={NavLink} to="/wiki" />
       <Menu.Menu position="right">
         <Menu vertical>
           <Dropdown item text="Menu">
@@ -31,9 +31,6 @@ function NavBar() {
         </Menu>
       </Menu.Menu>
     </Menu>
-
-
-
 
 
 
