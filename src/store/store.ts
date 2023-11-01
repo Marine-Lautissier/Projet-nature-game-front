@@ -2,7 +2,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 // Importation du homeReducer :
-import homeReducer from '../components/reducer/homeReducer';
+import homeReducer from './reducer/homeReducer';
 
 // Création du store :
 const store = configureStore({
