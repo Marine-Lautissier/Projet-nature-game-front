@@ -10,6 +10,10 @@ import Footer from '../Footer/Footer';
 import TermsOfUse from '../Footer/TermsOfUse/TermsOfUse';
 import LegalNotice from '../Footer/LegalNotice/LegalNotice';
 import Contact from '../Footer/Contact/Contact';
+import ConnectPage from '../Authentication/ConnectPage/ConnectPage';
+import RegisterPage from '../Authentication/RegisterPage/RegisterPage';
+import ProfilePage from '../Profile/ProfilePage/ProfilePage';
+import React from 'react';
 
 function App() {
   return (
@@ -24,6 +28,9 @@ function App() {
         <Route path="/conditions-utilisations" element={<TermsOfUse />} />
         <Route path="/mentions-legales" element={<LegalNotice />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/connexion" element={<ConnectPage />} />
+        <Route path="/inscription" element={<RegisterPage />} />
+        <Route path="/profil" element={<ProfilePage />} />
       </Routes>
       <Footer />
     </div>
