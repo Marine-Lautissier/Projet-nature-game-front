@@ -1,19 +1,10 @@
 import { NavLink } from 'react-router-dom';
-import SubCategoryList from '../SubCategoryList/SubCategoryList';
+import { useAppSelector } from '../../../hooks/redux';
 
 function CategoryList() {
-  interface ISubCategoryList {
-    id: number;
-    name: string;
-  }
-
-  // Tableau d'objets des noms de sous-catégories
-  const subCategories: ISubCategoryList[] = [
-    { id: 1, name: 'Forêt' },
-    { id: 2, name: 'Montagne' },
-    { id: 3, name: 'Mer' },
-  ];
-
+  const subCategories = useAppSelector(
+    (state) => state.wikiReducer.subCategoryData
+  );
   return (
     <>
       <div className="presentation">
@@ -30,7 +21,7 @@ function CategoryList() {
           {subCategories.map((subCategory) => (
             <div key={subCategory.id} className="subcategory-card">
               <li>
-                <NavLink to="/wiki/sous-categorie/{id}">
+                <NavLink to={`/wiki/subcategorie/${subCategory.id}`}>
                   {subCategory.name}
                 </NavLink>
               </li>

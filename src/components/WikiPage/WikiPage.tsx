@@ -1,19 +1,12 @@
 import { NavLink } from 'react-router-dom';
-import CategoryList from './CategoryList/CategoryList';
+import { useAppSelector } from '../../hooks/redux';
+import instanceAxios from '../../utils/axios';
 
 function WikiPage() {
-  interface ICategoryList {
-    id: number;
-    name: string;
-  }
+  // const test = instanceAxios.get('/categories');
+  // console.log(test);
 
-  // Tableau d'objets des noms de catégories
-  const categories: ICategoryList[] = [
-    { id: 1, name: 'Faune' },
-    { id: 2, name: 'Flore' },
-    { id: 3, name: 'Fungi' },
-  ];
-
+  const categories = useAppSelector((state) => state.wikiReducer.categoryData);
   return (
     <div>
       <h1>Accueil Wiki</h1>
@@ -28,7 +21,9 @@ function WikiPage() {
           {categories.map((category) => (
             <div key={category.id} className="category-card">
               <li>
-                <NavLink to="/wiki/categorie/{id}">{category.name}</NavLink>
+                <NavLink to={`/wiki/categorie/${category.id}`}>
+                  {category.name}
+                </NavLink>
               </li>
             </div>
           ))}

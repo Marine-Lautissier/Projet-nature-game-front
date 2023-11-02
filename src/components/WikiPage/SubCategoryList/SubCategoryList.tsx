@@ -1,8 +1,8 @@
 import { NavLink } from 'react-router-dom';
+import { useAppSelector } from '../../../hooks/redux';
 
 function SubCategoryList() {
-  const recipes = useAppSelector((state) => state.recipes.list);
-  
+  const articles = useAppSelector((state) => state.wikiReducer.articleData);
   return (
     <div>
       <h2>Forêt</h2>
@@ -16,7 +16,7 @@ function SubCategoryList() {
       {articles.map((article) => (
         <ul key={article.id}>
           <li>
-            <NavLink to="/wiki/article/{id}">{article.name}</NavLink>
+            <NavLink to={`/wiki/article/${article.id}`}>{article.name}</NavLink>
           </li>
         </ul>
       ))}
