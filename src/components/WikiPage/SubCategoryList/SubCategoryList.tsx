@@ -25,7 +25,7 @@ function SubCategoryList() {
       {articles.map((article) => (
         <ul key={article.id}>
           <li>
-            <NavLink to="/wiki/artcile/{id}">{article.name}</NavLink>
+            <NavLink to="/wiki/article/{id}">{article.name}</NavLink>
           </li>
         </ul>
       ))}
