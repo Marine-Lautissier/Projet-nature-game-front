@@ -1,17 +1,8 @@
 import { NavLink } from 'react-router-dom';
 
 function SubCategoryList() {
-  interface IArticles {
-    id: number;
-    name: string;
-  }
-
-  // Tableau d'objets des noms des articles
-  const articles: IArticles[] = [
-    { id: 1, name: 'Abeille' },
-    { id: 2, name: 'Coccinelle' },
-    { id: 3, name: 'Fourmi' },
-  ];
+  const recipes = useAppSelector((state) => state.recipes.list);
+  
   return (
     <div>
       <h2>Forêt</h2>
@@ -25,7 +16,7 @@ function SubCategoryList() {
       {articles.map((article) => (
         <ul key={article.id}>
           <li>
-            <NavLink to="/wiki/artcile/{id}">{article.name}</NavLink>
+            <NavLink to="/wiki/article/{id}">{article.name}</NavLink>
           </li>
         </ul>
       ))}
