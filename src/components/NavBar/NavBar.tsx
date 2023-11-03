@@ -3,6 +3,7 @@ import 'semantic-ui-css/semantic.min.css';
 import { Menu, Dropdown, Image } from 'semantic-ui-react';
 import logo from '../../assets/logo-site.png';
 import './NavBar.scss';
+import React from 'react';
 
 function NavBar() {
   const logoStyle = {
