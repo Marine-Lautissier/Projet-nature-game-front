@@ -1,34 +1,30 @@
 import { NavLink } from 'react-router-dom';
+import { useAppSelector } from '../../../hooks/redux';
+import { Card } from 'semantic-ui-react';
 
 function SubCategoryList() {
-  interface IArticles {
-    id: number;
-    name: string;
-  }
-
-  // Tableau d'objets des noms des articles
-  const articles: IArticles[] = [
-    { id: 1, name: 'Abeille' },
-    { id: 2, name: 'Coccinelle' },
-    { id: 3, name: 'Fourmi' },
-  ];
+  const subCategories = useAppSelector((state) => state.wikiReducer.subCategoryData);
+  const articles = useAppSelector((state) => state.wikiReducer.articleData);
   return (
     <div>
-      <h2>Forêt</h2>
+      {subCategories.map((subCategory) => (
+      <>
+      <h2 key={subCategory.id}>{subCategory.name}</h2>
       <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi, debitis
-        molestiae a soluta cumque sed labore expedita deleniti saepe
-        consequuntur, asperiores inventore veritatis aliquid enim sequi velit
-        quam aperiam dicta.
+      {subCategory.description}
       </p>
+      </>
+  ))}
       <p>Liste des articles</p>
-      {articles.map((article) => (
-        <ul key={article.id}>
-          <li>
-            <NavLink to="/wiki/article/{id}">{article.name}</NavLink>
-          </li>
-        </ul>
-      ))}
+      <Card.Group>
+        {articles.map((article) => (
+          <Card key={article.id}>
+            <Card.Content>
+              <Card.Header><NavLink to={`/wiki/categorie/${article.id}`}>{article.name}</NavLink></Card.Header>
+            </Card.Content>
+          </Card>
+        ))}
+      </Card.Group>
     </div>
   );
 }

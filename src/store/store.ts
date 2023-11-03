@@ -1,13 +1,15 @@
 // Importation du configureStore qui se trouve dans @reduxjs/toolkit :
 import { configureStore } from '@reduxjs/toolkit';
 
-// Importation du homeReducer :
+// Importation du homeReducer et du wikiReducer :
 import homeReducer from './reducer/homeReducer';
+import wikiReducer from './reducer/wikiReducer';
 
 // Création du store :
 const store = configureStore({
   reducer: {
     homeReducer,
+    wikiReducer,
   },
 });
 

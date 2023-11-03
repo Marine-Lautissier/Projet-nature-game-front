@@ -18,9 +18,9 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/wiki" element={<WikiPage />} />
-        <Route path="/wiki/categorie/{id}" element={<CategoryList />} />
-        <Route path="/wiki/sous-categorie/{id}" element={<SubCategoryList />} />
-        <Route path="/wiki/article/{id}" element={<WikiArticle />} />
+        <Route path="/wiki/categorie/:id" element={<CategoryList />} />
+        <Route path="/wiki/sous-categorie/:id" element={<SubCategoryList />} />
+        <Route path="/wiki/article/:id" element={<WikiArticle />} />
         <Route path="/conditions-utilisations" element={<TermsOfUse />} />
         <Route path="/mentions-legales" element={<LegalNotice />} />
         <Route path="/contact" element={<Contact />} />

@@ -1,19 +1,23 @@
-import { NavLink } from 'react-router-dom';
-import CategoryList from './CategoryList/CategoryList';
+import {  NavLink, useParams } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+// import instanceAxios from '../../utils/axios';
+import 'semantic-ui-css/semantic.min.css';
+import { Card } from 'semantic-ui-react';
+import { useEffect } from 'react';
+import { fetchCategories } from '../../store/thunks/categories';
 
 function WikiPage() {
-  interface ICategoryList {
-    id: number;
-    name: string;
-  }
+  // const test = instanceAxios.get('/categories');
+  // console.log(test);
+  const { id } = useParams();
 
-  // Tableau d'objets des noms de catégories
-  const categories: ICategoryList[] = [
-    { id: 1, name: 'Faune' },
-    { id: 2, name: 'Flore' },
-    { id: 3, name: 'Fungi' },
-  ];
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(fetchCategories());
+  }, [dispatch]);
 
+  const categories = useAppSelector((state) => state.wikiReducer.categoryData);
+  console.log(categories);
   return (
     <div>
       <h1>Accueil Wiki</h1>
@@ -23,18 +27,19 @@ function WikiPage() {
         deserunt consequatur eligendi modi minima quo, quos eveniet tempore
         eius! Voluptatibus.
       </p>
-      <div className="category-list">
-        <div className="category-cards">
-          {categories.map((category) => (
-            <div key={category.id} className="category-card">
-              <li>
-                <NavLink to="/wiki/categorie/{id}">{category.name}</NavLink>
-              </li>
-            </div>
-          ))}
-        </div>
-      </div>
+      <Card.Group>
+        {categories.map((category) => (
+          <Card key={category.id}>
+            <Card.Content>
+            <NavLink to={`/wiki/categorie/${category.id}`}>
+              {category.name}
+            </NavLink>
+            </Card.Content>
+          </Card>
+        ))}
+      </Card.Group>
     </div>
   );
 }
+
 export default WikiPage;
