@@ -5,6 +5,7 @@ import instanceAxios from '../../utils/axios';
 export const fetchArticles = createAsyncThunk('fetchArticles', async () => {
   // appel api pour récupérer les articles:
   const result = await instanceAxios.get('/articles');
+  console.log(result);
   // on retourne les données d'un article pour que le reducer les reçoivent dans le payolad de l'action fullfilled:
   return result.data.articles;
 });
