@@ -1,4 +1,4 @@
-import {  NavLink, useParams } from 'react-router-dom';
+import {  NavLink } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 // import instanceAxios from '../../utils/axios';
 import 'semantic-ui-css/semantic.min.css';
@@ -9,7 +9,6 @@ import { fetchCategories } from '../../store/thunks/categories';
 function WikiPage() {
   // const test = instanceAxios.get('/categories');
   // console.log(test);
-  const { id } = useParams();
 
   const dispatch = useAppDispatch();
   useEffect(() => {
@@ -17,7 +16,7 @@ function WikiPage() {
   }, [dispatch]);
 
   const categories = useAppSelector((state) => state.wikiReducer.categoryData);
-  console.log(categories);
+
   return (
     <div>
       <h1>Accueil Wiki</h1>

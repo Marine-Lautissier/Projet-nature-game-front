@@ -4,27 +4,29 @@ import { Card } from 'semantic-ui-react';
 
 function CategoryList() {
   const { id } = useParams();
-  const categories = useAppSelector(
-    (state) => state.wikiReducer.categoryData
-  );
-  const subCategories = useAppSelector(
-    (state) => state.wikiReducer.subCategoryData
-  );
-  return (
+  const categoryId = id ? parseInt(id, 10) : undefined;
+  const categories = useAppSelector((state) => state.wikiReducer.categoryData);
+  const subCategories = useAppSelector((state) => state.wikiReducer.subCategoryData);
+
+  // Filtrer la catégorie sélectionnée en fonction de l'`id`
+  const selectedCategory = categories.find((category) => category.id === categoryId);
+
+  return (  
     <>
-    {categories.filter((category) => category.name.length > 3)
-  .map((category) => (
-    <div key={category.id} className="presentation">
-      <h1>{category.name}</h1>
-      <p>{category.description}</p>
-    </div>
-    ))}
+      {selectedCategory && (
+        <div key={selectedCategory.id} className="presentation">
+          <h1>{selectedCategory.name}</h1>
+          <p>{selectedCategory.description}</p>
+        </div>
+      )}
 
       <Card.Group>
         {subCategories.map((subCategory) => (
           <Card key={subCategory.id}>
             <Card.Content>
-              <Card.Header><NavLink to={`/wiki/categorie/${subCategory.id}`}>{subCategory.name}</NavLink></Card.Header>
+              <Card.Header>
+                <NavLink to={`/wiki/categorie/${subCategory.id}`}>{subCategory.name}</NavLink>
+              </Card.Header>
             </Card.Content>
           </Card>
         ))}

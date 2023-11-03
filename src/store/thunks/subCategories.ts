@@ -6,8 +6,9 @@ export const fetchSubCategories = createAsyncThunk(
   'fetchSubCategories',
   async () => {
     // appel api pour récupérer les subcatégories:
-    const result = await instanceAxios.get('/subCategories');
+    const result = await instanceAxios.get('/subcategories');
+    console.log(result);
     // on retourne les données d'une subcatégorie pour que le reducer les reçoivent dans le payolad de l'action fullfilled:
-    return result.data.subCategories;
+    return result.data.subcategories;
   }
 );
