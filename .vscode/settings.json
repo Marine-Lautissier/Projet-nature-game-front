@@ -35,4 +35,7 @@
   "cSpell.words": [
     "airbnb"
   ],
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
 }

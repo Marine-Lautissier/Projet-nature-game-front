@@ -1,34 +1,44 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
+import { Card } from 'semantic-ui-react';
+import 'semantic-ui-css/semantic.min.css';
+import React, { useEffect } from 'react';
+import { fetchArticles } from '../../../store/thunks/articles';
 
 function SubCategoryList() {
-  interface IArticles {
-    id: number;
-    name: string;
-  }
+  const { id } = useParams();
+  const subCategoryId = id ? parseInt(id, 10) : undefined;
 
-  // Tableau d'objets des noms des articles
-  const articles: IArticles[] = [
-    { id: 1, name: 'Abeille' },
-    { id: 2, name: 'Coccinelle' },
-    { id: 3, name: 'Fourmi' },
-  ];
+  const subCategories = useAppSelector((state) => state.wikiReducer.subCategoryData);
+  const articles = useAppSelector((state) => state.wikiReducer.articleData);
+
+  const selectedSubCategory = subCategories.find((subCategory) => subCategory.id === subCategoryId);
+
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(fetchArticles());
+  }, [dispatch]);
+  
   return (
     <div>
-      <h2>Forêt</h2>
+      {selectedSubCategory && (
+      <>
+      <h2 key={selectedSubCategory.id}>{selectedSubCategory.name}</h2>
       <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi, debitis
-        molestiae a soluta cumque sed labore expedita deleniti saepe
-        consequuntur, asperiores inventore veritatis aliquid enim sequi velit
-        quam aperiam dicta.
+      {selectedSubCategory.description}
       </p>
+      </>
+  )}
       <p>Liste des articles</p>
-      {articles.map((article) => (
-        <ul key={article.id}>
-          <li>
-            <NavLink to="/wiki/artcile/{id}">{article.name}</NavLink>
-          </li>
-        </ul>
-      ))}
+      <Card.Group>
+        {articles.map((article) => (
+          <Card key={article.id}>
+            <Card.Content>
+              <Card.Header><NavLink to={`/wiki/articles/${article.id}`}>{article.name}</NavLink></Card.Header>
+            </Card.Content>
+          </Card>
+        ))}
+      </Card.Group>
     </div>
   );
 }
