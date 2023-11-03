@@ -7,5 +7,5 @@ export const fetchCategories = createAsyncThunk('fetchCategories', async () => {
   const result = await instanceAxios.get('/categories');
   console.log(result);
   // on retourne les données d'une catégorie pour que le reducer les reçoivent dans le payload de l'action fullfilled:
-  return result.data;
+  return result.data.categories;
 });

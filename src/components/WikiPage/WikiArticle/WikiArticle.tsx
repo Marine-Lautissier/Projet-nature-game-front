@@ -1,14 +1,21 @@
+import { Card, Image } from "semantic-ui-react";
+import { useAppSelector } from "../../../hooks/redux";
+import { NavLink } from "react-router-dom";
+
 function WikiArticle() {
+  const articles = useAppSelector((state) => state.wikiReducer.articleData);
   return (
-    <div>
-      <h1>Abeille</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut officiis
-        beatae nemo asperiores a sapiente soluta molestiae itaque distinctio
-        deserunt consequatur eligendi modi minima quo, quos eveniet tempore
-        eius! Voluptatibus.
-      </p>
-    </div>
+    <Card.Group>
+    {articles.map((article) => (
+      <Card key={article.id}>
+        <Card.Content>
+          <Image>{article.picture}</Image>
+          <Card.Header><h1>{article.name}</h1></Card.Header>
+          <Card.Description>{article.description}</Card.Description>
+        </Card.Content>
+      </Card>
+    ))}
+  </Card.Group>
   );
 }
 export default WikiArticle;

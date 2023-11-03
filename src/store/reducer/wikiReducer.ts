@@ -2,6 +2,8 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { Categories, SubCategories, Articles } from '../../@types/wiki';
 import { fetchCategories } from '../thunks/categories';
+import { fetchSubCategories } from '../thunks/subCategories';
+import { fetchArticles } from '../thunks/articles';
 
 // Interface qui type le State :
 interface IWikiState {
@@ -11,7 +13,7 @@ interface IWikiState {
 }
 
 // Initialisation du State :
-const initialState: IWikiState = {
+export const initialState: IWikiState = {
   categoryData: [],
   subCategoryData: [],
   articleData: [],
@@ -21,7 +23,15 @@ const wikiReducer = createReducer(initialState, (builder) => {
   builder.addCase(fetchCategories.fulfilled, (state, action) => {
     // enregistre dans le state les catégories (reçues de l'API et dispo dans le payload de l'action):
     state.categoryData = action.payload;
-  });
+  })
+    .addCase(fetchSubCategories.fulfilled, (state, action) => {
+      // enregistre dans le state les sous-catégories (reçues de l'API et dispo dans le payload de l'action):
+      state.subCategoryData = action.payload;
+    })
+    .addCase(fetchArticles.fulfilled, (state, action) => {
+      // enregistre dans le state les articles (reçues de l'API et dispo dans le payload de l'action):
+      state.articleData = action.payload;
+    });
 });
 
 export default wikiReducer;
