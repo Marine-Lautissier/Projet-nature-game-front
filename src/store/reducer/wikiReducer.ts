@@ -2,8 +2,8 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { Categories, SubCategories, Articles } from '../../@types/wiki';
 import { fetchCategories } from '../thunks/categories';
-import { fetchSubCategories } from '../thunks/subCategories';
 import { fetchArticles } from '../thunks/articles';
+import { fetchSubCategories } from '../thunks/subCategories';
 
 // Interface qui type le State :
 interface IWikiState {

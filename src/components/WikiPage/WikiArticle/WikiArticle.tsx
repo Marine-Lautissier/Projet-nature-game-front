@@ -1,6 +1,7 @@
 import { Card, Image } from "semantic-ui-react";
+import 'semantic-ui-css/semantic.min.css';
 import { useAppSelector } from "../../../hooks/redux";
-import { NavLink } from "react-router-dom";
+import React from 'react';
 
 function WikiArticle() {
   const articles = useAppSelector((state) => state.wikiReducer.articleData);

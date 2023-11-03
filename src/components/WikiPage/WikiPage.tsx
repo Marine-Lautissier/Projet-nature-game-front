@@ -5,6 +5,7 @@ import 'semantic-ui-css/semantic.min.css';
 import { Card } from 'semantic-ui-react';
 import { useEffect } from 'react';
 import { fetchCategories } from '../../store/thunks/categories';
+import React from 'react';
 
 function WikiPage() {
   // const test = instanceAxios.get('/categories');
@@ -30,7 +31,7 @@ function WikiPage() {
         {categories.map((category) => (
           <Card key={category.id}>
             <Card.Content>
-            <NavLink to={`/wiki/categorie/${category.id}`}>
+            <NavLink to={`/wiki/categories/${category.id}`}>
               {category.name}
             </NavLink>
             </Card.Content>
