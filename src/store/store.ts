@@ -4,12 +4,13 @@ import { configureStore } from '@reduxjs/toolkit';
 // Importation du homeReducer et du wikiReducer :
 import homeReducer from './reducer/homeReducer';
 import wikiReducer from './reducer/wikiReducer';
-
+import authReducer from './reducer/authReducer';
 // Création du store :
 const store = configureStore({
   reducer: {
     homeReducer,
     wikiReducer,
+    authReducer,
   },
 });
 
