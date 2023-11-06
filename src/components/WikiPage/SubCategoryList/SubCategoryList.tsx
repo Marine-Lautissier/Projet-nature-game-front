@@ -24,6 +24,7 @@ function SubCategoryList() {
       {selectedSubCategory && (
       <>
       <h2 key={selectedSubCategory.id}>{selectedSubCategory.name}</h2>
+      <img src={selectedSubCategory.picture.url} alt="" />
       <p>
       {selectedSubCategory.description}
       </p>

@@ -10,6 +10,10 @@ export interface SubCategories {
     name: string;
     description: string;
     articles: Articles[];
+    picture: {
+        name: string;
+        url: string;
+    };
 }
 
 export interface Articles {
@@ -17,7 +21,16 @@ export interface Articles {
     name: string;
     description: string;
     subCategory: {
+        id: number;
         name: string;
+        description: string;
+        category: {
+         id: number;
+         name: string;
+         description: string;
+    }}
+    picture: {
+        name: string;
+        url: string;
     };
-    picture: null;
 }
