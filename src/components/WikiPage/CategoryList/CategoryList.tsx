@@ -1,7 +1,7 @@
 import { NavLink, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
-import { Card } from 'semantic-ui-react';
+import { Card, Image } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import React from 'react';
 import { fetchSubCategories } from '../../../store/thunks/subCategories';
@@ -36,9 +36,9 @@ function CategoryList() {
           <Card key={subCategory.id}>
             <Card.Content>
               <Card.Header>
-              <NavLink to={`/wiki/subcategories/${subCategory.id}`}>{subCategory.name}</NavLink>
-
+              <Image as={NavLink} to={`/wiki/subcategories/${subCategory.id}`} src={subCategory.picture.url} wrapped ui={false} />
               </Card.Header>
+              <NavLink to={`/wiki/subcategories/${subCategory.id}`}>{subCategory.name}</NavLink>
             </Card.Content>
           </Card>
         ))}
