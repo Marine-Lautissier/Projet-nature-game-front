@@ -3,11 +3,9 @@ import 'semantic-ui-css/semantic.min.css';
 
 import { fetchConnectUser } from '../../../store/thunks/connectUser';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
-import { changeCredentials} from '../../../store/actions/userActions';
+import { actionLogin, changeInputValue } from '../../../store/actions/userActions';
 import { Navigate } from 'react-router-dom';
 import { ChangeEvent, FormEvent } from 'react';
-
-
 
 function ConnectPage() {
   const dispatch = useAppDispatch();
@@ -16,12 +14,16 @@ function ConnectPage() {
 
   const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
     const newEmail = event.target.value;
-    dispatch(changeCredentials({ email: newEmail, password }));
+    dispatch(changeInputValue({
+      email: newEmail, password,
+    }));
   };
 
   const handlePasswordChange = (event: ChangeEvent<HTMLInputElement>) => {
     const newPassword = event.target.value;
-    dispatch(changeCredentials({ email, password: newPassword }));
+    dispatch(changeInputValue({
+      email, password: newPassword,
+    }));
   };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -57,7 +59,7 @@ function ConnectPage() {
             placeholder="Mot de passe"
           />
         </Form.Field>
-        <Button type="submit">Se Connecter</Button>
+        <Button type="submit" onClick={() => {dispatch(actionLogin())}}>Se Connecter</Button>
       </Form>
     </div>
   );

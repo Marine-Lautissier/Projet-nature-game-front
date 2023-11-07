@@ -1,6 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import instanceAxios from '../../utils/axios';
-import { ConnectData } from '../../@types/authentification';
 import { RootState } from '../store';
 
 // Création d'un thunk pour la connexion de l'utilisateur
@@ -14,6 +13,10 @@ export const fetchConnectUser = createAsyncThunk('fetchConnectUser', async (_, t
       password: password,
     });
 
+    // on va ajouter le token dans l'instance axios
+    instanceAxios.defaults.headers.common.Authorization = `Bearer ${result.data.token}`;
+
+    console.log(result.data);
     // Si la connexion réussit, renvoie les données de l'utilisateur ou un jeton d'authentification
     return result.data;
   } catch (error) {
