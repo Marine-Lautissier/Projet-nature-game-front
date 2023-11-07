@@ -1,14 +1,16 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { fetchConnectUser } from '../thunks/connectUser';
 import { User } from '../../@types/authentification';
+import { actionLogin, changeInputValue } from '../actions/userActions';
 
 // Interface qui type le State d'authentification :
-interface IAuthState {
+export interface IAuthState {
   user: User[] | null; // Un utilisateur actuellement connecté, s'il y en a un
   loading: boolean; // Pour suivre l'état de chargement de la connexion
-  error: string | null; // En cas d'erreur, stockez le message d'erreur ici
+  error: string | null; // En cas d'erreur, stocke le message d'erreur ici
   email: string; // Champ email
   password: string; // Champ mot de passe
+  token: null | string;
 }
 
 // Initialisation du State d'authentification :
@@ -16,8 +18,9 @@ export const initialState: IAuthState = {
   user: null,
   loading: false,
   error: null,
-  email: '', // Initialisez le champ email à une chaîne vide
-  password: '', // Initialisez le champ mot de passe à une chaîne vide
+  email: '',
+  password: '',
+  token: null,
 };
 
 const authReducer = createReducer(initialState, (builder) => {
@@ -33,7 +36,15 @@ const authReducer = createReducer(initialState, (builder) => {
     .addCase(fetchConnectUser.rejected, (state, action) => {
       state.loading = false;
       state.error = action.error.message || null; // Utilise une vérification de type pour traiter 'undefined' comme 'null'
-    });
-});
+    })
+    .addCase(changeInputValue, (state, action) => {
+      state.email = action.payload.email; // Mettre à jour l'e-mail
+      state.password = action.payload.password; // Mettre à jour le mot de passe
+    })
+    .addCase(actionLogin, (state, action) => {
+      state.loading = false;
+    })
+  });
 
 export default authReducer;
+
