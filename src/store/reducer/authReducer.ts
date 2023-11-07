@@ -1,23 +1,24 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { fetchConnectUser } from '../thunks/connectUser';
-import { User } from '../../@types/authentification';
-import { actionLogin, changeInputValue } from '../actions/userActions';
-
+import { User } from '../../@types/authentication';
+import { actionLogin, actionRegister, changeInputRegisterValue, changeInputValue } from '../actions/userActions';
+import { fetchRegisterUser } from '../thunks/registerUser';
 // Interface qui type le State d'authentification :
 export interface IAuthState {
   user: User[] | null; // Un utilisateur actuellement connecté, s'il y en a un
   loading: boolean; // Pour suivre l'état de chargement de la connexion
   error: string | null; // En cas d'erreur, stocke le message d'erreur ici
+  pseudo: string; // Champ pseudo
   email: string; // Champ email
   password: string; // Champ mot de passe
   token: null | string;
 }
-
 // Initialisation du State d'authentification :
 export const initialState: IAuthState = {
   user: null,
   loading: false,
   error: null,
+  pseudo: '',
   email: '',
   password: '',
   token: null,
@@ -32,6 +33,7 @@ const authReducer = createReducer(initialState, (builder) => {
     .addCase(fetchConnectUser.fulfilled, (state, action) => {
       state.loading = false;
       state.user = action.payload; // Stocke les données de l'utilisateur connecté ici
+      state.token = action.payload.token;
     })
     .addCase(fetchConnectUser.rejected, (state, action) => {
       state.loading = false;
@@ -40,11 +42,35 @@ const authReducer = createReducer(initialState, (builder) => {
     .addCase(changeInputValue, (state, action) => {
       state.email = action.payload.email; // Mettre à jour l'e-mail
       state.password = action.payload.password; // Mettre à jour le mot de passe
+      state.email = '';
+      state.password = '';
     })
     .addCase(actionLogin, (state, action) => {
       state.loading = false;
     })
-  });
-
+    .addCase(fetchRegisterUser.pending, (state) => {
+      state.loading = true;
+      state.error = null; // Réinitialise les erreurs en cours de chargement
+    })
+    .addCase(fetchRegisterUser.fulfilled, (state, action) => {
+      state.loading = false;
+      state.user = action.payload; // Stocke les données de l'utilisateur connecté ici
+      state.token = action.payload.token;
+    })
+    .addCase(fetchRegisterUser.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.error.message || null; // Utilise une vérification de type pour traiter 'undefined' comme 'null'
+    })
+    .addCase(changeInputRegisterValue, (state, action) => {
+      state.email = action.payload.email; // Mettre à jour l'e-mail
+      state.password = action.payload.password; // Mettre à jour le mot de passe
+      state.pseudo = action.payload.pseudo; // Mettre à jour le pseudo
+      state.email = '';
+      state.password = '';
+      state.pseudo = '';
+    })
+    .addCase(actionRegister, (state, action) => {
+      state.loading = false;
+    })
+});
 export default authReducer;
-
