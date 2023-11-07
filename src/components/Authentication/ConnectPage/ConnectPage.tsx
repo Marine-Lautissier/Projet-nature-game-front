@@ -4,13 +4,14 @@ import 'semantic-ui-css/semantic.min.css';
 import { fetchConnectUser } from '../../../store/thunks/connectUser';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
 import { actionLogin, changeInputValue } from '../../../store/actions/userActions';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { ChangeEvent, FormEvent } from 'react';
 
 function ConnectPage() {
   const dispatch = useAppDispatch();
   const email = useAppSelector((state) => state.authReducer.email);
   const password = useAppSelector((state) => state.authReducer.password);
+  let loading = useAppSelector((state) => state.authReducer.loading);
 
   const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
     const newEmail = event.target.value;
@@ -25,13 +26,15 @@ function ConnectPage() {
       email, password: newPassword,
     }));
   };
+  const navigate = useNavigate();
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     dispatch(fetchConnectUser()) 
-      // Rediriger l'utilisateur après la connexion réussie
-      //  <Navigate to='/accueil' />; // Remplace '/accueil' par l'URL souhaitée
+    if (loading = true){
+      navigate('/');
   }
+}
 
   return (
     <div>
