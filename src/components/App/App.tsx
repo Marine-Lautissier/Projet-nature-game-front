@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import HomePage from '../HomePage/HomePage';
 import NavBar from '../NavBar/NavBar';
+// import Loading from './App';
 import './App.scss';
 import WikiPage from '../WikiPage/WikiPage';
 import CategoryList from '../WikiPage/CategoryList/CategoryList';
@@ -14,11 +15,16 @@ import ConnectPage from '../Authentication/ConnectPage/ConnectPage';
 import RegisterPage from '../Authentication/RegisterPage/RegisterPage';
 import ProfilePage from '../Profile/ProfilePage/ProfilePage';
 import React from 'react';
+import { useAppSelector } from '../../hooks/redux';
 
 function App() {
+  // const loading = useAppSelector((state) => state.authReducer.loading);
   return (
     <div className="App">
       <NavBar />
+      {/* {loading ? (
+        <Loading />
+      ) : ( */}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/wiki" element={<WikiPage />} />
@@ -32,6 +38,7 @@ function App() {
         <Route path="/inscription" element={<RegisterPage />} />
         <Route path="/profil" element={<ProfilePage />} />
       </Routes>
+       {/* )} */}
       <Footer />
     </div>
   );
