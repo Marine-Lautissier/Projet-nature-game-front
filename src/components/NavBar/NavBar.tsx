@@ -27,7 +27,7 @@ function NavBar() {
     <Menu secondary>
       <Image src={logo} style={logoStyle} />
       <Menu.Item name="Accueil" as={NavLink} to="/" />
-      <Menu.Item name="Jeux" as={NavLink} to="/game" />
+      <Menu.Item name="Jeux" as={NavLink} to="/jeux" />
       <Menu.Item name="Wiki" as={NavLink} to="/wiki" />
       {logged && (
       <Menu.Item name={`${pseudo}`} />
