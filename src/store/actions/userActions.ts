@@ -19,3 +19,6 @@ interface ChangeInputRegisterPayload {
 export const changeInputRegisterValue = createAction<ChangeInputRegisterPayload>('CHANGE_INPUT_REGISTER_VALUE');
 // Création d'une action avec Redux Toolkit pour permettre l'inscription au clic
 export const actionRegister = createAction('REGISTER');
+
+// Création d'une action avec Redux Toolkit pour permettre la déconnexion
+export const logOut = createAction('LOGOUT');
