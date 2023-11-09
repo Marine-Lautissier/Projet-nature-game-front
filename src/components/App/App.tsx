@@ -3,6 +3,7 @@ import HomePage from '../HomePage/HomePage';
 import NavBar from '../NavBar/NavBar';
 // import Loading from './App';
 import './App.scss';
+
 import WikiPage from '../WikiPage/WikiPage';
 import CategoryList from '../WikiPage/CategoryList/CategoryList';
 import SubCategoryList from '../WikiPage/SubCategoryList/SubCategoryList';
@@ -14,10 +15,29 @@ import Contact from '../Footer/Contact/Contact';
 import ConnectPage from '../Authentication/ConnectPage/ConnectPage';
 import RegisterPage from '../Authentication/RegisterPage/RegisterPage';
 import ProfilePage from '../Profile/ProfilePage/ProfilePage';
-import React from 'react';
-import { useAppSelector } from '../../hooks/redux';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { setToken } from '../../store/actions/userActions';
+import instanceAxios from '../../utils/axios';
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    // Au chargement de l'application, récupère le token du localStorage s'il existe
+    const token = localStorage.getItem('authToken');
+
+    const pseudo = localStorage.getItem('authPseudo');
+
+    if (token && pseudo) {
+      console.log(token);
+      // Définit le token dans l'en-tête Axios
+      instanceAxios.defaults.headers.common.Authorization = `Bearer ${token}`;
+      // Met à jour l'état Redux avec le token
+      dispatch(setToken({token, pseudo}));
+    }
+  }, [dispatch]);
+
   // const loading = useAppSelector((state) => state.authReducer.loading);
   return (
     <div className="App">

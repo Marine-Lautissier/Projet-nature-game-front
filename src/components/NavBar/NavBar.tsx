@@ -10,7 +10,7 @@ import { logOut } from '../../store/actions/userActions';
 function NavBar() {
   const dispatch = useAppDispatch();
   const logged = useAppSelector((state) => state.authReducer.logged);
-  const pseudo = useAppSelector((state) => state.authReducer);
+  const pseudo = useAppSelector((state) => state.authReducer.pseudo);
   console.log(pseudo);
 
   const logoStyle = {

@@ -8,10 +8,15 @@ export const fetchConnectUser = createAsyncThunk('fetchConnectUser', async (_, t
     const state = thunkAPI.getState() as RootState;
     const { email, password } = state.authReducer;
     // Requête POST à l'API pour connecter l'utilisateur
-    const result = await instanceAxios.post('/login_check', {
+    const result = await instanceAxios.post('/login', {
       username: email,
       password: password,
     });
+
+    // Stocke le token d'authentification dans le localStorage
+    localStorage.setItem('authToken', result.data.token);
+
+    localStorage.setItem('authPseudo', result.data.pseudo);
 
     // on va ajouter le token dans l'instance axios
     instanceAxios.defaults.headers.common.Authorization = `Bearer ${result.data.token}`;
@@ -21,6 +26,6 @@ export const fetchConnectUser = createAsyncThunk('fetchConnectUser', async (_, t
     return result.data;
   } catch (error) {
     // En cas d'erreur, rejette la promesse avec l'erreur
-    // throw error;
+    //  throw error;
   }
 });

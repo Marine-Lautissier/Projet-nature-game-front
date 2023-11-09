@@ -1,7 +1,7 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { fetchConnectUser } from '../thunks/connectUser';
 import { User } from '../../@types/authentication';
-import { actionLogin, actionRegister, changeInputRegisterValue, changeInputValue, logOut } from '../actions/userActions';
+import { actionLogin, actionRegister, changeInputRegisterValue, changeInputValue, logOut, setToken } from '../actions/userActions';
 import { fetchRegisterUser } from '../thunks/registerUser';
 // Interface qui type le State d'authentification :
 export interface IAuthState {
@@ -33,10 +33,11 @@ const authReducer = createReducer(initialState, (builder) => {
       state.error = null; // Réinitialise les erreurs en cours de chargement
     })
     .addCase(fetchConnectUser.fulfilled, (state, action) => {
+      console.log(state);
       state.loading = false;
       // state.user = action.payload; // Stocke les données de l'utilisateur connecté ici
       state.logged = true;
-      state.pseudo = action.payload;
+      state.pseudo = action.payload.pseudo;
       state.token = action.payload.token;
     })
     .addCase(fetchConnectUser.rejected, (state, action) => {
@@ -80,6 +81,11 @@ const authReducer = createReducer(initialState, (builder) => {
       state.logged = false;
       state.pseudo = '';
       state.token = null;
+    })
+    .addCase(setToken, (state, action) => {
+      state.token = action.payload.token;
+      state.pseudo = action.payload.pseudo;
+      state.logged = true;
     })
 });
 export default authReducer;
