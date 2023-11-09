@@ -1,9 +1,7 @@
+import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import 'semantic-ui-css/semantic.min.css';
 import { Menu, Dropdown, Image } from 'semantic-ui-react';
 import logo from '../../assets/logo-site.png';
-import './NavBar.scss';
-import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { logOut } from '../../store/actions/userActions';
 
@@ -11,42 +9,49 @@ function NavBar() {
   const dispatch = useAppDispatch();
   const logged = useAppSelector((state) => state.authReducer.logged);
   const pseudo = useAppSelector((state) => state.authReducer.pseudo);
-  console.log(pseudo);
 
   const logoStyle = {
-    width: '50px', // Largeur souhaitée
-    height: '40px', // Hauteur souhaitée
+    width: '50px',
+    height: '50px',
   };
 
   const handleLogout = () => {
     dispatch(logOut());
-  }
-
+  };
 
   return (
     <Menu>
-      <Image src={logo} style={logoStyle} />
-      <Menu.Item name="Accueil" as={NavLink} to="/"></Menu.Item>
-      <Menu.Item name="Jeux" as={NavLink} to="/jeux"></Menu.Item>
-      <Menu.Item name="Wiki" as={NavLink} to="/wiki"></Menu.Item>
-      {logged && (
-        <Menu.Item name={`${pseudo}`} />
-      )}
-      <Dropdown text="Menu" pointing className="link item right">
-        <Dropdown.Menu>
-          {!logged && (
-            <Dropdown.Item as={Link} to="/connexion">Se connecter</Dropdown.Item>
-          )}
-          {logged && (
-            <Dropdown.Item onClick={handleLogout}>Se Déconnecter</Dropdown.Item>
-          )}
-          <Dropdown.Item as={Link} to="/inscription">S'inscrire</Dropdown.Item>
-          <Dropdown.Item as={Link} to="/profil">Accéder au profil</Dropdown.Item>
-        </Dropdown.Menu>
-      </Dropdown>
+      <Menu.Item>
+        <Image src={logo} style={logoStyle} />
+      </Menu.Item>
+      <Menu.Item as={NavLink} to="/" name="Accueil" />
+      <Menu.Item as={NavLink} to="/jeux" name="Jeux" />
+      <Menu.Item as={NavLink} to="/wiki" name="Wiki" />
+      <Menu.Menu position="right">
+        {logged && (
+          <Menu.Item name={pseudo} style={{ color: 'green' }} />
+        )}
+        <Dropdown text="Menu" pointing className="link item">
+          <Dropdown.Menu>
+            {!logged && (
+              <Dropdown.Item as={Link} to="/connexion">
+                Se connecter
+              </Dropdown.Item>
+            )}
+            {logged && (
+              <Dropdown.Item onClick={handleLogout}>Se Déconnecter</Dropdown.Item>
+            )}
+            <Dropdown.Item as={Link} to="/inscription">
+              S'inscrire
+            </Dropdown.Item>
+            <Dropdown.Item as={Link} to="/profil">
+              Accéder au profil
+            </Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+      </Menu.Menu>
     </Menu>
   );
 }
 
 export default NavBar;
-

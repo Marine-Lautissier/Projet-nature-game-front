@@ -28,7 +28,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // Au chargement de l'application, récupère le token du localStorage s'il existe
+    // Au chargement de l'application, on récupère le token du localStorage s'il existe
     const token = localStorage.getItem('authToken');
 
     const pseudo = localStorage.getItem('authPseudo');
@@ -38,7 +38,7 @@ function App() {
       // Définit le token dans l'en-tête Axios
       instanceAxios.defaults.headers.common.Authorization = `Bearer ${token}`;
       // Met à jour l'état Redux avec le token
-      dispatch(setToken({token, pseudo}));
+      dispatch(setToken({ token, pseudo }));
     }
   }, [dispatch]);
 
@@ -63,7 +63,7 @@ function App() {
         <Route path="/profil" element={<ProfilePage />} />
         <Route path="/jeux" element={<GamePage />} />
       </Routes>
-       {/* )} */}
+      {/* )} */}
       <Footer />
     </div>
   );
