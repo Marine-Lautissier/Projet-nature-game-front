@@ -20,7 +20,7 @@ function GamePage() {
       <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nisi nesciunt nam tempore.
         Molestiae est hic omnis soluta, impedit assumenda similique ipsa minus odio iste voluptates eum quis nam adipisci unde?
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores odit dolor atque distinctio magnam optio mollitia nemo a esse exercitationem? Voluptatibus numquam voluptatem possimus molestiae in nobis mollitia, quidem qui.</p>
-      <Button><NavLink className='button-navlink' to={''}>Lancer la partie</NavLink></Button>
+      <Button><NavLink className='button-navlink' to={'/jeux/quizz'}>Lancer la partie</NavLink></Button>
 
       <Table celled>
         
