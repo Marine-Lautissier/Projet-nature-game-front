@@ -21,36 +21,29 @@ function NavBar() {
   const handleLogout = () => {
     dispatch(logOut());
   }
-  
+
 
   return (
-    <Menu secondary>
+    <Menu>
       <Image src={logo} style={logoStyle} />
-      <Menu.Item name="Accueil" as={NavLink} to="/" />
-      <Menu.Item name="Jeux" as={NavLink} to="/game" />
-      <Menu.Item name="Wiki" as={NavLink} to="/wiki" />
-      {logged && (
-      <Menu.Item name={`${pseudo}`} />
-      )}
+      <Menu.Item name="Accueil" as={NavLink} to="/"></Menu.Item>
+      <Menu.Item name="Jeux" as={NavLink} to="/jeux"></Menu.Item>
+      <Menu.Item name="Wiki" as={NavLink} to="/wiki"></Menu.Item>
       {!logged && (
-      <Menu.Item name='' />
+        <Menu.Item name={`${pseudo}`} />
       )}
-      <Menu.Menu position="right">
-        <Menu vertical>
-          <Dropdown item text="Menu">
-            <Dropdown.Menu>
-              {!logged && (
-              <Dropdown.Item as={Link} to="/connexion">Se connecter</Dropdown.Item>
-              )}
-              {logged && (
-              <Dropdown.Item onClick={handleLogout}>Se Déconnecter</Dropdown.Item>
-              )}
-              <Dropdown.Item as={Link} to="/inscription">S'inscrire</Dropdown.Item>
-              <Dropdown.Item as={Link} to="/profil">Accéder au profil</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-        </Menu>
-      </Menu.Menu>
+      <Dropdown text="Menu" pointing className="link item right">
+        <Dropdown.Menu>
+          {!logged && (
+            <Dropdown.Item as={Link} to="/connexion">Se connecter</Dropdown.Item>
+          )}
+          {logged && (
+            <Dropdown.Item onClick={handleLogout}>Se Déconnecter</Dropdown.Item>
+          )}
+          <Dropdown.Item as={Link} to="/inscription">S'inscrire</Dropdown.Item>
+          <Dropdown.Item as={Link} to="/profil">Accéder au profil</Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
     </Menu>
   );
 }

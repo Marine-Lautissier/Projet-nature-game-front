@@ -15,10 +15,14 @@ import Contact from '../Footer/Contact/Contact';
 import ConnectPage from '../Authentication/ConnectPage/ConnectPage';
 import RegisterPage from '../Authentication/RegisterPage/RegisterPage';
 import ProfilePage from '../Profile/ProfilePage/ProfilePage';
-import React, { useEffect } from 'react';
+
+import GamePage from '../GamePage/GamePage';
 import { useDispatch } from 'react-redux';
 import { setToken } from '../../store/actions/userActions';
 import instanceAxios from '../../utils/axios';
+import React, { useEffect } from 'react';
+import { useAppSelector } from '../../hooks/redux';
+
 
 function App() {
   const dispatch = useDispatch();
@@ -57,6 +61,7 @@ function App() {
         <Route path="/connexion" element={<ConnectPage />} />
         <Route path="/inscription" element={<RegisterPage />} />
         <Route path="/profil" element={<ProfilePage />} />
+        <Route path="/jeux" element={<GamePage />} />
       </Routes>
        {/* )} */}
       <Footer />

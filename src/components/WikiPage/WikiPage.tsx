@@ -27,7 +27,7 @@ function WikiPage() {
         deserunt consequatur eligendi modi minima quo, quos eveniet tempore
         eius! Voluptatibus.
       </p>
-      <Card.Group>
+      <Card.Group itemsPerRow={3}>
         {categories.map((category) => (
           <Card key={category.id}>
             <Card.Content>
