@@ -29,7 +29,7 @@ function NavBar() {
       <Menu.Item name="Accueil" as={NavLink} to="/"></Menu.Item>
       <Menu.Item name="Jeux" as={NavLink} to="/jeux"></Menu.Item>
       <Menu.Item name="Wiki" as={NavLink} to="/wiki"></Menu.Item>
-      {!logged && (
+      {logged && (
         <Menu.Item name={`${pseudo}`} />
       )}
       <Dropdown text="Menu" pointing className="link item right">
