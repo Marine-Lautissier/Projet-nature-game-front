@@ -44,6 +44,7 @@ function CategoryList() {
         ))}
       </Card.Group>
     </>
+    
   );
 }
 

@@ -15,6 +15,7 @@ import ConnectPage from '../Authentication/ConnectPage/ConnectPage';
 import RegisterPage from '../Authentication/RegisterPage/RegisterPage';
 import ProfilePage from '../Profile/ProfilePage/ProfilePage';
 import GamePage from '../GamePage/GamePage';
+import Quiz from '../GamePage/Quiz/Quiz';
 import React from 'react';
 import { useAppSelector } from '../../hooks/redux';
 
@@ -39,6 +40,7 @@ function App() {
         <Route path="/inscription" element={<RegisterPage />} />
         <Route path="/profil" element={<ProfilePage />} />
         <Route path="/jeux" element={<GamePage />} />
+        <Route path="/jeux/quiz" element={<Quiz />} />
       </Routes>
        {/* )} */}
       <Footer />
