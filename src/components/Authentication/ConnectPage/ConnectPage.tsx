@@ -11,7 +11,7 @@ function ConnectPage() {
   const dispatch = useAppDispatch();
   const email = useAppSelector((state) => state.authReducer.email);
   const password = useAppSelector((state) => state.authReducer.password);
-  const loading = useAppSelector((state) => state.authReducer.loading);
+  let loading = useAppSelector((state) => state.authReducer.loading);
 
   const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
     const newEmail = event.target.value;
@@ -34,7 +34,7 @@ function ConnectPage() {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     dispatch(fetchConnectUser());
-    if (loading) {
+    if (loading = true) {
       navigate('/');
     }
   }
