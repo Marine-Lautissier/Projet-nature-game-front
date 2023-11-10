@@ -26,39 +26,46 @@ function ProfilePage() {
   };
 
   return (
-    <div>
-      <Header as="h1">Profile Page</Header>
+    <div style={{ maxWidth: '650px', margin: '0 auto' }}>
+      <Header as="h1" textAlign="center">Profile Page</Header>
       <Segment>
-        <Button color="blue" onClick={displayAvatarForm}>
-          Modifier Avatar
-        </Button>
+        <div style={{ overflow: 'hidden' }}>
+          <Button color="green" onClick={displayAvatarForm} style={{ float: 'right' }}>
+            Modifier Avatar
+          </Button>
+        </div>
         {activeForm === 'avatar' && <EditAvatarForm />}
       </Segment>
       <Segment>
-        <Button color="blue" onClick={displayPasswordForm}>
-          Modifier Mot de passe
-        </Button>
+        <div style={{ overflow: 'hidden' }}>
+          <Button color="green" onClick={displayPasswordForm} style={{ float: 'right' }}>
+            Modifier Mot de passe
+          </Button>
+        </div>
         {activeForm === 'password' && <EditPasswordForm />}
       </Segment>
       <Segment>
-        <Button color="blue" onClick={displayEmailForm}>
-          Modifier Email
-        </Button>
+        <div style={{ overflow: 'hidden' }}>
+          <Button color="green" onClick={displayEmailForm} style={{ float: 'right' }}>
+            Modifier Email
+          </Button>
+        </div>
         {activeForm === 'email' && <EditEmailForm />}
       </Segment>
       <Segment>
-        <Button color="blue" onClick={displayPseudoForm}>
-          Modifier Pseudo
-        </Button>
+        <div style={{ overflow: 'hidden' }}>
+          <Button color="green" onClick={displayPseudoForm} style={{ float: 'right' }}>
+            Modifier Pseudo
+          </Button>
+        </div>
         {activeForm === 'pseudo' && <EditPseudoForm />}
       </Segment>
       <Segment>
-        <Header as="h3">Score du Quizz</Header>
+        <Header as="h3" style={{ float: 'right' }}>Score du Quizz</Header>
         <QuizScore score={100} />
       </Segment>
     </div>
   );
 }
-
 
 export default ProfilePage;

@@ -22,3 +22,6 @@ export const actionRegister = createAction('REGISTER');
 
 // Création d'une action avec Redux Toolkit pour permettre la déconnexion
 export const logOut = createAction('LOGOUT');
+
+// Création d'une action avec Redux Toolkit pour définir le token d'authentification
+export const setToken = createAction<{token: string, pseudo: string}>('user/setToken');
