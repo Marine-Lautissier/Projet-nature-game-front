@@ -60,7 +60,7 @@ const authReducer = createReducer(initialState, (builder) => {
     .addCase(fetchRegisterUser.fulfilled, (state, action) => {
       state.loading = false;
       state.user = action.payload; // Stocke les données de l'utilisateur connecté ici
-      state.logged = true;
+      state.logged = false;
     })
     .addCase(fetchRegisterUser.rejected, (state, action) => {
       state.loading = false;

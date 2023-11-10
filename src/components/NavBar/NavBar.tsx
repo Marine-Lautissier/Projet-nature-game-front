@@ -16,7 +16,8 @@ function NavBar() {
   };
 
   const handleLogout = () => {
-    dispatch(logOut());
+    const token = localStorage.clear();
+    dispatch(logOut(token));
   };
 
   return (
