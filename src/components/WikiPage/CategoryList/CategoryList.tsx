@@ -1,44 +1,50 @@
-import { NavLink } from 'react-router-dom';
-import SubCategoryList from '../SubCategoryList/SubCategoryList';
+import { NavLink, useParams } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
+import { Card, Image } from 'semantic-ui-react';
+import 'semantic-ui-css/semantic.min.css';
+import React from 'react';
+import { fetchSubCategories } from '../../../store/thunks/subCategories';
 
 function CategoryList() {
-  interface ISubCategoryList {
-    id: number;
-    name: string;
-  }
+  const { id } = useParams();
+  const categoryId = id ? parseInt(id, 10) : undefined;
 
-  // Tableau d'objets des noms de sous-catégories
-  const subCategories: ISubCategoryList[] = [
-    { id: 1, name: 'Forêt' },
-    { id: 2, name: 'Montagne' },
-    { id: 3, name: 'Mer' },
-  ];
+  const categories = useAppSelector((state) => state.wikiReducer.categoryData);
+  const subCategories = useAppSelector((state) => state.wikiReducer.subCategoryData);
+  console.log(categories); // Vérifier les données des catégories
+  console.log(subCategories); // Vérifier les données des sous-catégories
+  // Filtrer la catégorie sélectionnée en fonction de l'`id`
+  const selectedCategory = categories.find((category) => category.id === categoryId);
 
-  return (
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(fetchSubCategories());
+  }, [dispatch]);
+
+  return (  
     <>
-      <div className="presentation">
-        <h1>Flore</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis maiores
-          unde veniam magni cum, minus nihil, explicabo nulla exercitationem
-          dolor modi saepe, facere ipsum quod. Sunt aspernatur officiis nesciunt
-          a!
-        </p>
-      </div>
-      <div className="subcategory-list">
-        <div className="subcategory-cards">
-          {subCategories.map((subCategory) => (
-            <div key={subCategory.id} className="subcategory-card">
-              <li>
-                <NavLink to="/wiki/sous-categorie/{id}">
-                  {subCategory.name}
-                </NavLink>
-              </li>
-            </div>
-          ))}
+      {selectedCategory && (
+        <div key={selectedCategory.id} className="presentation">
+          <h1>{selectedCategory.name}</h1>
+          <p>{selectedCategory.description}</p>
         </div>
-      </div>
+      )}
+
+      <Card.Group>
+        {subCategories.map((subCategory) => (
+          <Card key={subCategory.id}>
+            <Card.Content>
+              <Card.Header>
+              <Image as={NavLink} to={`/wiki/subcategories/${subCategory.id}`} src={subCategory.picture.url} wrapped ui={false} />
+              </Card.Header>
+              <NavLink to={`/wiki/subcategories/${subCategory.id}`}>{subCategory.name}</NavLink>
+            </Card.Content>
+          </Card>
+        ))}
+      </Card.Group>
     </>
+    
   );
 }
 

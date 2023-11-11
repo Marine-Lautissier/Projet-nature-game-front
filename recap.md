@@ -36,4 +36,5 @@ Store :
 Reducers :
 - home,
 - wiki,
-- quizz.
+- quizz,
+- authentification.
