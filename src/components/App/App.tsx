@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import HomePage from '../HomePage/HomePage';
+import ArticleDetailPage from '../HomePage/ArticleDetailPage/ArticleDetailPage';
 import NavBar from '../NavBar/NavBar';
 // import Loading from './App';
 import './App.scss';
@@ -21,7 +22,7 @@ import { setToken } from '../../store/actions/userActions';
 import instanceAxios from '../../utils/axios';
 import React, { useEffect } from 'react';
 import Quiz from '../GamePage/Quiz/Quiz';
-import React from 'react';
+
 import { useAppSelector } from '../../hooks/redux';
 
 
@@ -52,6 +53,7 @@ function App() {
       ) : ( */}
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/wiki/article" element={<ArticleDetailPage />} />
         <Route path="/wiki" element={<WikiPage />} />
         <Route path="/wiki/categories/:id" element={<CategoryList />} />
         <Route path="/wiki/subcategories/:id" element={<SubCategoryList />} />
