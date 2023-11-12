@@ -1,12 +1,12 @@
-// Importation du createReducer qui se trouve dans @reduxjs/toolkit :
 import { createReducer } from '@reduxjs/toolkit';
-
 import IPlayers from '../../@types/players';
+import IrandomArticle from '../../@types/randomArticle';
+import { fetchRandomArticle } from '../thunks/randomArticle';
 
 // Interface qui type le State :
 interface IHomeState {
-  homeList: IPlayers[]; // c'est la valeur de homeList qui est un tableau
-  article: string; // c'est la valeur de l'article qui est un string
+  homeList: IPlayers[];
+  randomArticle: IrandomArticle[];
 }
 
 // Initialisation du State :
@@ -28,9 +28,24 @@ const initialState: IHomeState = {
       pseudo: 'Marine',
     },
   ],
-  article: '',
+  randomArticle: [
+    {
+      id: 0,
+      name: '',
+      description: '',
+      subcategory: {
+        name: '',
+      },
+      picture: '',
+    },
+  ],
 };
 
-const homeReducer = createReducer(initialState, (builder) => {});
+const homeReducer = createReducer(initialState, (builder) => {
+  builder.addCase(fetchRandomArticle.fulfilled, (state, action) => {
+
+    state.randomArticle = action.payload;
+  });
+});
 
 export default homeReducer;
