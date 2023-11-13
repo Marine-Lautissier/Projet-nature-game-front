@@ -1,12 +1,15 @@
 import React from 'react';
-import { IrandomArticle } from '../../../@types/randomArticle';
 import { Container, Image, Header, Segment } from 'semantic-ui-react';
+import { useLocation } from 'react-router-dom';
 
-interface ArticleDetailPageProps {
-  articleRandom: IrandomArticle;
-}
+// Fonction fléchée qui affiche le détail de l'article:
+const ArticleDetailPage = () => {
 
-const ArticleDetailPage: React.FunctionComponent<ArticleDetailPageProps> = ({ articleRandom }) => {
+  const location = useLocation();
+
+  const { articleRandom } = location.state;
+  console.log(articleRandom);
+
   return (
     <Container text>
       <Segment padded="very">
@@ -17,7 +20,7 @@ const ArticleDetailPage: React.FunctionComponent<ArticleDetailPageProps> = ({ ar
           </p>
         )}
         <p>{articleRandom.description}</p>
-        {articleRandom.picture && <Image src={articleRandom.picture} alt={articleRandom.name} fluid />}
+        {articleRandom.picture && <Image src={articleRandom.picture.url} alt={articleRandom.name} fluid />}
       </Segment>
     </Container>
   );

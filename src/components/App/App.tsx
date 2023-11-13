@@ -53,7 +53,7 @@ function App() {
       ) : ( */}
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/wiki/article" element={<ArticleDetailPage />} />
+        <Route path="/wiki/article/random" element={<ArticleDetailPage />} />
         <Route path="/wiki" element={<WikiPage />} />
         <Route path="/wiki/categories/:id" element={<CategoryList />} />
         <Route path="/wiki/subcategories/:id" element={<SubCategoryList />} />

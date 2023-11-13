@@ -1,16 +1,16 @@
 import { createReducer } from '@reduxjs/toolkit';
 import IPlayers from '../../@types/players';
-import IrandomArticle from '../../@types/randomArticle';
+import { IRandomArticle } from'../../@types/randomArticle';
 import { fetchRandomArticle } from '../thunks/randomArticle';
 
 // Interface qui type le State :
-interface IHomeState {
+export interface IHomeState {
   homeList: IPlayers[];
-  randomArticle: IrandomArticle[];
+  randomArticle: IRandomArticle;
 }
 
 // Initialisation du State :
-const initialState: IHomeState = {
+export const initialState: IHomeState = {
   homeList: [
     {
       pseudo: 'Ismael',
@@ -28,22 +28,26 @@ const initialState: IHomeState = {
       pseudo: 'Marine',
     },
   ],
-  randomArticle: [
-    {
-      id: 0,
+  randomArticle: {  
+    description: '',
+    id: 1,
+    name: '',
+    picture: {
+      id: 1,
       name: '',
-      description: '',
-      subcategory: {
-        name: '',
-      },
-      picture: '',
+      url: '',
     },
-  ],
+    subcategory: {
+      category: [],
+      id: 1,
+      name: '',
+    },
+  },
 };
 
 const homeReducer = createReducer(initialState, (builder) => {
-  builder.addCase(fetchRandomArticle.fulfilled, (state, action) => {
-
+  builder
+  .addCase(fetchRandomArticle.fulfilled, (state, action) => {
     state.randomArticle = action.payload;
   });
 });
