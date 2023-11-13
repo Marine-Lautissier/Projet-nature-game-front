@@ -3,9 +3,6 @@ import { createAction } from '@reduxjs/toolkit';
 // Création d'une action avec Redux Toolkit pour cliquer/valider une réponse
 export const clickResponse = createAction('CLICK_RESPONSE');
 
-// Création d'une action avec Redux Toolkit pour cliquer sur la question suivante
-export const clickNextQuestion = createAction('CLICK_NEXT_QUESTION');
-
 // Création d'une action avec Redux Toolkit pour augmenter le score de l'utilisateur
 export const increaseUserScore = createAction('INCREASE_USER_SCORE');
 

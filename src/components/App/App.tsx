@@ -21,8 +21,7 @@ import { setToken } from '../../store/actions/userActions';
 import instanceAxios from '../../utils/axios';
 import React, { useEffect } from 'react';
 import Quiz from '../GamePage/Quiz/Quiz';
-import React from 'react';
-import { useAppSelector } from '../../hooks/redux';
+
 
 
 function App() {
