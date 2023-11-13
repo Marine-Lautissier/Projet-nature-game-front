@@ -1,9 +1,15 @@
-export interface IrandomArticle {
+export interface IRandomArticle {
+  description: string;
   id: number;
   name: string;
-  description: string;
+  picture: {
+    id: number;
+    name: string;
+    url: string;
+  }
   subcategory: {
+    category: [];
+    id: number;
     name: string;
   };
-  picture: string | null;
 }
