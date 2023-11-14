@@ -1,8 +1,8 @@
-import {  NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import 'semantic-ui-css/semantic.min.css';
 import React from 'react';
 import { Button, Table } from 'semantic-ui-react';
-import'./GamePage.scss';
+import './GamePage.scss';
 
 function GamePage() {
   return (
@@ -23,44 +23,44 @@ function GamePage() {
       <Button><NavLink className='button-navlink' to={'/jeux/quiz'}>Lancer la partie</NavLink></Button>
 
       <Table celled>
-        
-    <Table.Header>
-      <Table.Row>
-        <Table.HeaderCell>Classements</Table.HeaderCell>
-        <Table.HeaderCell>Joueurs</Table.HeaderCell>
-        <Table.HeaderCell>Scores</Table.HeaderCell>
-      </Table.Row>
-    </Table.Header>
 
-    <Table.Body>
-      <Table.Row>
-        <Table.Cell>1</Table.Cell>
-        <Table.Cell>Nicolas</Table.Cell>
-        <Table.Cell>100</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.Cell>2</Table.Cell>
-        <Table.Cell>Lola</Table.Cell>
-        <Table.Cell>80</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.Cell>3</Table.Cell>
-        <Table.Cell>Ismael</Table.Cell>
-        <Table.Cell>79</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.Cell>4</Table.Cell>
-        <Table.Cell>Rosa</Table.Cell>
-        <Table.Cell>60</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.Cell>5</Table.Cell>
-        <Table.Cell>Marine</Table.Cell>
-        <Table.Cell>40</Table.Cell>
-      </Table.Row>
-    </Table.Body>
+        <Table.Header>
+          <Table.Row>
+            <Table.HeaderCell>Classements</Table.HeaderCell>
+            <Table.HeaderCell>Joueurs</Table.HeaderCell>
+            <Table.HeaderCell>Scores</Table.HeaderCell>
+          </Table.Row>
+        </Table.Header>
 
-    </Table>
+        <Table.Body>
+          <Table.Row>
+            <Table.Cell>1</Table.Cell>
+            <Table.Cell>Nicolas</Table.Cell>
+            <Table.Cell>100</Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>2</Table.Cell>
+            <Table.Cell>Lola</Table.Cell>
+            <Table.Cell>80</Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>3</Table.Cell>
+            <Table.Cell>Ismael</Table.Cell>
+            <Table.Cell>79</Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>4</Table.Cell>
+            <Table.Cell>Rosa</Table.Cell>
+            <Table.Cell>60</Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>5</Table.Cell>
+            <Table.Cell>Marine</Table.Cell>
+            <Table.Cell>40</Table.Cell>
+          </Table.Row>
+        </Table.Body>
+
+      </Table>
     </div>
   );
 }

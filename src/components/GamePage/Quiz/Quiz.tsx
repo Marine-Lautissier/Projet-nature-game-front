@@ -3,7 +3,7 @@ import { Button, Segment } from "semantic-ui-react";
 import 'semantic-ui-css/semantic.min.css';
 import './Quiz.scss'
 import { fetchQuizQuestion } from "../../../store/thunks/quiz";
-import { clickResponse, setCurrentQuestionIndex } from '../../../store/actions/quizActions';
+import { clickResponse, setCurrentQuestionIndex, updateUserScore } from '../../../store/actions/quizActions';
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
 
 function Quiz() {
@@ -13,22 +13,35 @@ function Quiz() {
     dispatch(fetchQuizQuestion());
   }, [dispatch]);
 
+
+
   // Sélection des données du Redux Store
   const questions = useAppSelector((state) => state.quizReducer.quizData);
+  console.log(questions);
   const currentQuestionIndex = useAppSelector((state) => state.quizReducer.currentQuestionIndex);
   const quizCompleted = useAppSelector((state) => state.quizReducer.quizCompleted);
-  const QuizScore = useAppSelector((state) => state.quizReducer.userScore);
+  let QuizScore = useAppSelector((state) => state.quizReducer.userScore);
 
   // Sélection de la question actuelle
   const currentQuestion = questions[currentQuestionIndex];
+  console.log(currentQuestion);
+
 
   // Gestion du clic sur une réponse
-  const handleResponseClick = (response) => {
-    dispatch(clickResponse(response));
+  const handleResponseClick = (answer: string) => {
+    // Dispatch l'action avec la réponse et si elle est correcte
+    dispatch(clickResponse({ answer, isCorrect: answer === currentQuestion.correctAnswer }));
+
+    // Mise à jour du score
+    if (answer === currentQuestion.correctAnswer) {
+      QuizScore += 10;
+    }
+    console.log(QuizScore);
   };
 
   // Gestion du clic sur le bouton "Question suivante"
   const handleNextQuestionClick = () => {
+    dispatch(updateUserScore(QuizScore));
     dispatch(setCurrentQuestionIndex());
   };
 
@@ -49,17 +62,21 @@ function Quiz() {
 
           {/* Mélange aléatoire des réponses et affichage */}
           {randomOrder([
-            currentQuestion.correct_answer,
-            currentQuestion.false_answer_1,
-            currentQuestion.false_answer_2,
-            currentQuestion.false_answer_3,
+            currentQuestion.correctAnswer,
+            currentQuestion.falseAnswer1,
+            currentQuestion.falseAnswer2,
+            currentQuestion.falseAnswer3,
           ]).map((answer, index) => (
             <div key={index}>
               {/* Affichage de la lettre correspondante à la réponse (A, B, C, D) */}
               <Segment className="response-option">{String.fromCharCode(65 + index)}</Segment>
 
               {/* Bouton de réponse */}
-              <Button className="response-button" type="submit" onClick={() => handleResponseClick(answer)}>
+              <Button
+                className="response-button"
+                type="submit"
+                onClick={() => handleResponseClick(answer)}
+              >
                 {answer}
               </Button>
             </div>
@@ -72,10 +89,15 @@ function Quiz() {
         </>
       )}
 
+
+
       {/* Affichage du score si le quiz est terminé*/}
-      {quizCompleted && (
+      {!quizCompleted && (
         <>
-          <Segment>Score : {QuizScore}</Segment>
+          <Segment>
+            Score : {QuizScore}
+          </Segment>
+          <Button>Relancer la partie</Button>
         </>
       )}
     </div>
