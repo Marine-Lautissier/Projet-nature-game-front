@@ -24,4 +24,4 @@ export const actionRegister = createAction('REGISTER');
 export const logOut = createAction('LOGOUT');
 
 // Création d'une action avec Redux Toolkit pour définir le token d'authentification
-export const setToken = createAction<{token: string, pseudo: string}>('user/setToken');
+export const setToken = createAction<{token: string, pseudo: string, email: string, avatar: string,score:string}>('user/setToken');

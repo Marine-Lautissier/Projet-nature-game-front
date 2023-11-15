@@ -33,12 +33,17 @@ function App() {
 
     const pseudo = localStorage.getItem('authPseudo');
 
-    if (token && pseudo) {
+    const email = localStorage.getItem('authEmail');
+
+    const avatar = localStorage.getItem('authAvatar');
+    const score = localStorage.getItem('authScore');
+
+    if (token && pseudo && email && avatar && score) {
       console.log(token);
       // Définit le token dans l'en-tête Axios
       instanceAxios.defaults.headers.common.Authorization = `Bearer ${token}`;
       // Met à jour l'état Redux avec le token
-      dispatch(setToken({ token, pseudo }));
+      dispatch(setToken({ token, pseudo, email, avatar,score }));
     }
   }, [dispatch]);
 

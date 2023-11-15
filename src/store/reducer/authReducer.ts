@@ -8,6 +8,7 @@ export interface IAuthState {
   user: User[] | null; // Un utilisateur actuellement connecté, s'il y en a un
   loading: boolean; // Pour suivre l'état de chargement de la connexion
   error: string | null; // En cas d'erreur, stocke le message d'erreur ici
+  avatar: string;
   pseudo: string; // Champ pseudo
   email: string; // Champ email
   password: string; // Champ mot de passe
@@ -19,6 +20,7 @@ export const initialState: IAuthState = {
   user: null,
   loading: false,
   error: null,
+  avatar: '',
   pseudo: '',
   email: '',
   password: '',
@@ -38,6 +40,8 @@ const authReducer = createReducer(initialState, (builder) => {
       // state.user = action.payload; // Stocke les données de l'utilisateur connecté ici
       state.logged = true;
       state.pseudo = action.payload.pseudo;
+      state.email = action.payload.email;
+      state.avatar = action.payload.avatar;
       state.token = action.payload.token;
     })
     .addCase(fetchConnectUser.rejected, (state, action) => {
@@ -47,8 +51,6 @@ const authReducer = createReducer(initialState, (builder) => {
     .addCase(changeInputValue, (state, action) => {
       state.email = action.payload.email; // Mettre à jour l'e-mail
       state.password = action.payload.password; // Mettre à jour le mot de passe
-      // state.email = '';
-      // state.password = '';
     })
     .addCase(actionLogin, (state, action) => {
       state.loading = false;
@@ -70,9 +72,6 @@ const authReducer = createReducer(initialState, (builder) => {
       state.email = action.payload.email; // Mettre à jour l'e-mail
       state.password = action.payload.password; // Mettre à jour le mot de passe
       state.pseudo = action.payload.pseudo; // Mettre à jour le pseudo
-      // state.email = '';
-      // state.password = '';
-      // state.pseudo = '';
     })
     .addCase(actionRegister, (state, action) => {
       state.loading = false;
@@ -80,11 +79,15 @@ const authReducer = createReducer(initialState, (builder) => {
     .addCase(logOut, (state) => {
       state.logged = false;
       state.pseudo = '';
+      state.email = '';
+      state.avatar = '';
       state.token = null;
     })
     .addCase(setToken, (state, action) => {
       state.token = action.payload.token;
       state.pseudo = action.payload.pseudo;
+      state.email = action.payload.email;
+      state.avatar = action.payload.avatar;
       state.logged = true;
     })
 });
