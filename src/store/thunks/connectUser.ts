@@ -18,6 +18,10 @@ export const fetchConnectUser = createAsyncThunk('fetchConnectUser', async (_, t
 
     localStorage.setItem('authPseudo', result.data.pseudo);
 
+    localStorage.setItem('authEmail', result.data.email);
+
+    localStorage.setItem('authAvatar', result.data.avatar)
+
     // on va ajouter le token dans l'instance axios
     instanceAxios.defaults.headers.common.Authorization = `Bearer ${result.data.token}`;
 
