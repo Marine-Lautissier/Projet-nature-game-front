@@ -40,7 +40,7 @@ function SubCategoryList() {
       )}
       <p>Liste des articles</p>
       {/* Affiche la liste des articles filtrés */}
-      <Card.Group>
+      <Card.Group itemsPerRow={3}>
         {filteredArticles.map((article) => (
           <Card key={article.id}>
             <Card.Content>

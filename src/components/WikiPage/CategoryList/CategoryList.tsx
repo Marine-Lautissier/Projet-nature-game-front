@@ -40,7 +40,7 @@ function CategoryList() {
       )}
 
       {/* Affiche la liste des sous-catégories filtrées */}
-      <Card.Group>
+      <Card.Group itemsPerRow={3}>
         {filteredSubCategories.map((subCategory: SubCategories) => (
           <Card key={subCategory.id}>
             <Card.Content>
