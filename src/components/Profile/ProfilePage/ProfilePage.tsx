@@ -85,10 +85,10 @@ function ProfilePage() {
             {activeForm === 'pseudo' && <EditPseudoForm />}
           </Segment>
 
-          {/* Segment pour afficher le score du quizz */}
-          <Segment>
+          {/* Segment pour afficher le score du quizz - en cours de construction... */}
+          {/* <Segment>
             <Header >Score du Quizz: {quizzScore} </Header>
-          </Segment>
+          </Segment> */}
         </>
       )}
     </div>
