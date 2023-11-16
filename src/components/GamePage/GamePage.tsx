@@ -22,7 +22,8 @@ function GamePage() {
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores odit dolor atque distinctio magnam optio mollitia nemo a esse exercitationem? Voluptatibus numquam voluptatem possimus molestiae in nobis mollitia, quidem qui.</p>
       <Button><NavLink className='button-navlink' to={'/jeux/quiz'}>Lancer la partie</NavLink></Button>
 
-      <Table celled>
+      {/* Tableau avec classements des joueurs - en cours de construction... */}
+      {/* <Table celled>
 
         <Table.Header>
           <Table.Row>
@@ -60,7 +61,7 @@ function GamePage() {
           </Table.Row>
         </Table.Body>
 
-      </Table>
+      </Table>  */}
     </div>
   );
 }
