@@ -22,6 +22,7 @@ import { setToken } from '../../store/actions/userActions';
 import instanceAxios from '../../utils/axios';
 import React, { useEffect } from 'react';
 import Quiz from '../GamePage/Quiz/Quiz';
+import Error from '../Error/Error';
 
 import { useAppSelector } from '../../hooks/redux';
 
@@ -44,13 +45,10 @@ function App() {
     }
   }, [dispatch]);
 
-  // const loading = useAppSelector((state) => state.authReducer.loading);
   return (
     <div className="App">
       <NavBar />
-      {/* {loading ? (
-        <Loading />
-      ) : ( */}
+
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/wiki/article/random" element={<ArticleDetailPage />} />
@@ -66,8 +64,9 @@ function App() {
         <Route path="/profil" element={<ProfilePage />} />
         <Route path="/jeux" element={<GamePage />} />
         <Route path="/jeux/quiz" element={<Quiz />} />
+        <Route path="*" element={<Error />} />
       </Routes>
-      {/* )} */}
+
       <Footer />
     </div>
   );
