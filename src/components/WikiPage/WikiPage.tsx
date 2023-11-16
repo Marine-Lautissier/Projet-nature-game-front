@@ -1,8 +1,8 @@
-import {  NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 // import instanceAxios from '../../utils/axios';
 import 'semantic-ui-css/semantic.min.css';
-import { Card } from 'semantic-ui-react';
+import { Card, Image } from 'semantic-ui-react';
 import { useEffect } from 'react';
 import { fetchCategories } from '../../store/thunks/categories';
 import React from 'react';
@@ -22,18 +22,20 @@ function WikiPage() {
     <div>
       <h1>Accueil Wiki</h1>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut officiis
-        beatae nemo asperiores a sapiente soluta molestiae itaque distinctio
-        deserunt consequatur eligendi modi minima quo, quos eveniet tempore
-        eius! Voluptatibus.
+        Vous trouverez sur cette page d'accueil Wiki trois catégories, que vous trouverez ci-dessous, ainsi que leurs sous-catégories et leurs articles.
+        <br />
+        Bonne lecture!
       </p>
       <Card.Group itemsPerRow={3}>
         {categories.map((category) => (
           <Card key={category.id}>
             <Card.Content>
-            <NavLink to={`/wiki/categories/${category.id}`}>
-              {category.name}
-            </NavLink>
+              <Card.Header>
+                <Image as={NavLink} to={`/wiki/categories/${category.id}`} src={category.picture.url} wrapped ui={false} />
+              </Card.Header>
+              <NavLink to={`/wiki/categories/${category.id}`}>
+                {category.name}
+              </NavLink>
             </Card.Content>
           </Card>
         ))}

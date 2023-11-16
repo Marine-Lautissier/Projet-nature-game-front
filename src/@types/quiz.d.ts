@@ -1,5 +1,4 @@
 export interface Quiz {
-  includes(correct_answer: string): unknown;
   question: string;
   correct_answer: string;
   false_answer_1: string;

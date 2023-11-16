@@ -22,24 +22,23 @@ export const initialState: IQuizState = {
 
 const quizReducer = createReducer(initialState, (builder) => {
   builder
-  .addCase(fetchQuizQuestion.fulfilled, (state, action) => {
-    state.quizData = action.payload;
-  })
+    .addCase(fetchQuizQuestion.fulfilled, (state, action) => {
+      state.quizData = action.payload;
+    })
     .addCase(clickResponse, (state, action) => {
-    state.quizData = action.payload;
-    console.log(state.quizData);
-  })
-    .addCase(clickNextQuestion, (state, action) => {
-    state.quizData = action.payload;
-  })
-    .addCase(setCurrentQuestionIndex, (state, action) => {
-      state.currentQuestionIndex = action.payload;
+      state.quizData = action.payload;
+      console.log(state.quizData);
+    })
+    .addCase(setCurrentQuestionIndex, (state) => {
+      state.currentQuestionIndex += 1;
     })
     .addCase(increaseUserScore, (state) => {
       state.userScore += 1;
     })
     .addCase(completeQuiz, (state) => {
       state.quizCompleted = true;
+
+
     });
 });
 
