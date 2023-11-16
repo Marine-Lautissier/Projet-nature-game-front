@@ -22,14 +22,16 @@ export const fetchConnectUser = createAsyncThunk('fetchConnectUser', async (_, t
 
     localStorage.setItem('authAvatar', result.data.avatar)
 
+    localStorage.setItem('authQuizzScore', result.data.quizzScore)
+
     // on va ajouter le token dans l'instance axios
     instanceAxios.defaults.headers.common.Authorization = `Bearer ${result.data.token}`;
 
-    console.log(result.data.token);
+    console.log(result.data);
     // Si la connexion réussit, renvoie les données de l'utilisateur ou un jeton d'authentification
     return result.data;
   } catch (error) {
     // En cas d'erreur, rejette la promesse avec l'erreur
-    //  throw error;
+    throw error;
   }
 });

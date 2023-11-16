@@ -22,10 +22,13 @@ import { setToken } from '../../store/actions/userActions';
 import instanceAxios from '../../utils/axios';
 import React, { useEffect } from 'react';
 import { useAppSelector } from '../../hooks/redux';
+import Loading from './Loading';
 
 
 function App() {
   const dispatch = useDispatch();
+
+  const loading = useAppSelector((state) => state.authReducer.loading);
 
   useEffect(() => {
     // Au chargement de l'application, on récupère le token du localStorage s'il existe
@@ -36,14 +39,15 @@ function App() {
     const email = localStorage.getItem('authEmail');
 
     const avatar = localStorage.getItem('authAvatar');
-    const score = localStorage.getItem('authScore');
 
-    if (token && pseudo && email && avatar && score) {
+    const quizzScore = localStorage.getItem('authQuizzScore');
+
+    if (token && pseudo && email && avatar && quizzScore) {
       console.log(token);
       // Définit le token dans l'en-tête Axios
       instanceAxios.defaults.headers.common.Authorization = `Bearer ${token}`;
       // Met à jour l'état Redux avec le token
-      dispatch(setToken({ token, pseudo, email, avatar,score }));
+      dispatch(setToken({ token, pseudo, email, avatar, quizzScore }));
     }
   }, [dispatch]);
 
@@ -51,9 +55,7 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      {/* {loading ? (
-        <Loading />
-      ) : ( */}
+
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/wiki" element={<WikiPage />} />
@@ -63,12 +65,17 @@ function App() {
         <Route path="/conditions-utilisations" element={<TermsOfUse />} />
         <Route path="/mentions-legales" element={<LegalNotice />} />
         <Route path="/contact" element={<Contact />} />
+        {/* {!loading && (
+          <>
+            <Loading /> */}
         <Route path="/connexion" element={<ConnectPage />} />
+        {/* </>
+        )} */}
         <Route path="/inscription" element={<RegisterPage />} />
         <Route path="/profil" element={<ProfilePage />} />
         <Route path="/jeux" element={<GamePage />} />
       </Routes>
-      {/* )} */}
+
       <Footer />
     </div>
   );
