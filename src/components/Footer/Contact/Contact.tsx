@@ -1,36 +1,37 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 import { Button, Form, Header, Select } from 'semantic-ui-react';
+import instanceAxios from '../../../utils/axios';
 
-interface ContactFormData {
-  firstName: string;
-  lastName: string;
-  email: string;
-  subject: string;
-  message: string;
-}
 
-const subjects = ['Suggestion', 'Question', 'Enquête RGPD', 'Autre'];
+const subjects = ['Suggestion', 'Question', 'Enquête RGPD', 'Aide technique', 'Autre'];
 
-const Contact: React.FC = () => {
-  const [formData, setFormData] = useState<ContactFormData>({
-    firstName: '',
+const Contact = () => {
+  const [formData, setFormData] = useState({
     lastName: '',
+    firstName: '',
     email: '',
-    subject: 'Suggestion', // Valeur par défaut pour le sujet
+    subject: 'Suggestion',
     message: '',
   });
 
-  const handleChange = (
-    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // Effectuez ici la logique d'envoi du formulaire de contact
-    console.log(formData);
+
+    try {
+      // Effectue la requête POST à l'API
+      const response = await instanceAxios.post('/contact', formData);
+
+      // Logique de traitement des données de réponse si nécessaire
+      console.log(response.data);
+    } catch (error) {
+      // Gére les erreurs ici
+      console.error('Une erreur s\'est produite lors de l\'envoi du formulaire', error);
+    }
   };
 
   return (
@@ -69,7 +70,7 @@ const Contact: React.FC = () => {
           }))}
           value={formData.subject}
           onChange={(_, data) =>
-            setFormData({ ...formData, subject: data.value as string })
+           setFormData({ ...formData, subject: data.value as string })
           }
         />
         <Form.TextArea

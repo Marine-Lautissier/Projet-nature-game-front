@@ -5,8 +5,29 @@ h3 {
 .article-day {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  text-align: center;
 }
 
-img {
-  width: 30%;
+.article-day img {
+  width: 50%;
+  height: 50%;
+  align-self: center;
+  border: 2px solid white;
+}
+
+.article-day p, .article-day h2 {
+  margin: 2rem;
+}
+
+.ui.button {
+  width: 10rem;
+  align-self: center;
+}
+
+
+.container {
+  margin-bottom: 3rem;
+  margin-top: 3rem;
+  background-color: lightgrey;
 }

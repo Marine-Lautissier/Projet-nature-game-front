@@ -48,7 +48,7 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-
+      <main>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/wiki/article/random" element={<ArticleDetailPage />} />
@@ -66,7 +66,7 @@ function App() {
         <Route path="/jeux/quiz" element={<Quiz />} />
         <Route path="*" element={<Error />} />
       </Routes>
-
+      </main>
       <Footer />
     </div>
   );
