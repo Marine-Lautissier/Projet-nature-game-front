@@ -1,0 +1,20 @@
+.quiz-container {
+  display: flex;
+  align-items: center;
+}
+h1 {
+  display: flex;
+}
+p {
+  text-align: center;
+}
+.ui.button.next-question {
+  color: green;
+  max-width: 15%;
+}
+.response-option {
+  padding-right: 20%;
+}
+.response-button {
+  padding-left: 10%;
+}

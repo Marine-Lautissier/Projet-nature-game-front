@@ -1,6 +1,6 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 import { Button, Form, Header, Select } from 'semantic-ui-react';
-import 'semantic-ui-css/semantic.min.css';
+
 interface ContactFormData {
   firstName: string;
   lastName: string;
@@ -8,7 +8,9 @@ interface ContactFormData {
   subject: string;
   message: string;
 }
+
 const subjects = ['Suggestion', 'Question', 'Enquête RGPD', 'Autre'];
+
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState<ContactFormData>({
     firstName: '',
@@ -17,19 +19,22 @@ const Contact: React.FC = () => {
     subject: 'Suggestion', // Valeur par défaut pour le sujet
     message: '',
   });
+
   const handleChange = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
   };
+
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     // Effectuez ici la logique d'envoi du formulaire de contact
     console.log(formData);
   };
+
   return (
-    <div>
+    <div style={{ maxWidth: '600px', margin: '0 auto' }}>
       <Header as="h1" textAlign="center">
         Formulaire de Contact
       </Header>
@@ -80,4 +85,5 @@ const Contact: React.FC = () => {
     </div>
   );
 };
+
 export default Contact;

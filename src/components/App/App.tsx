@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import HomePage from '../HomePage/HomePage';
+import ArticleDetailPage from '../HomePage/ArticleDetailPage/ArticleDetailPage';
 import NavBar from '../NavBar/NavBar';
 // import Loading from './App';
 import './App.scss';
@@ -15,14 +16,17 @@ import Contact from '../Footer/Contact/Contact';
 import ConnectPage from '../Authentication/ConnectPage/ConnectPage';
 import RegisterPage from '../Authentication/RegisterPage/RegisterPage';
 import ProfilePage from '../Profile/ProfilePage/ProfilePage';
-
 import GamePage from '../GamePage/GamePage';
 import { useDispatch } from 'react-redux';
 import { setToken } from '../../store/actions/userActions';
 import instanceAxios from '../../utils/axios';
 import React, { useEffect } from 'react';
+
 import { useAppSelector } from '../../hooks/redux';
 import Loading from './Loading';
+
+import Quiz from '../GamePage/Quiz/Quiz';
+
 
 
 function App() {
@@ -58,6 +62,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/wiki/article/random" element={<ArticleDetailPage />} />
         <Route path="/wiki" element={<WikiPage />} />
         <Route path="/wiki/categories/:id" element={<CategoryList />} />
         <Route path="/wiki/subcategories/:id" element={<SubCategoryList />} />
@@ -74,6 +79,7 @@ function App() {
         <Route path="/inscription" element={<RegisterPage />} />
         <Route path="/profil" element={<ProfilePage />} />
         <Route path="/jeux" element={<GamePage />} />
+        <Route path="/jeux/quiz" element={<Quiz />} />
       </Routes>
 
       <Footer />
