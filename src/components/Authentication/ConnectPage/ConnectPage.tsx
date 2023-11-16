@@ -20,7 +20,6 @@ function ConnectPage() {
 
   useEffect(() => {
     if (loading) {
-      console.log("texte");
       setTimeout(() => {
         navigate('/');
       }, 1000)

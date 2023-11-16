@@ -1,6 +1,5 @@
 import { NavLink } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-// import instanceAxios from '../../utils/axios';
 import 'semantic-ui-css/semantic.min.css';
 import { Card, Image } from 'semantic-ui-react';
 import { useEffect } from 'react';
@@ -8,8 +7,6 @@ import { fetchCategories } from '../../store/thunks/categories';
 import React from 'react';
 
 function WikiPage() {
-  // const test = instanceAxios.get('/categories');
-  // console.log(test);
 
   const dispatch = useAppDispatch();
   useEffect(() => {

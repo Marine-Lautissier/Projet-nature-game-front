@@ -1,11 +1,8 @@
-.App {
-  // max-width: 1740px;
-  // margin: 0 auto;
-  // width: 90%;
-  
-}
-
 main {
-  // background-color: #50A060;
   min-height: 90vh;
 }
+
+.ui.card .content img {
+  width: 100%;
+  object-fit: cover;
+ }

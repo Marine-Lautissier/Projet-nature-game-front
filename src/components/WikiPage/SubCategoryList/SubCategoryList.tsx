@@ -4,6 +4,7 @@ import { Card } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import React, { useEffect } from 'react';
 import { fetchArticles } from '../../../store/thunks/articles';
+import './SubCategory.scss'
 
 function SubCategoryList() {
   // Obtient l'ID à partir des paramètres d'URL
@@ -18,7 +19,7 @@ function SubCategoryList() {
   // Trouve la sous-catégorie sélectionnée à partir de l'ID
   const selectedSubCategory = subCategories.find((subCategory) => subCategory.id === subCategoryId);
 
-  // Filtrer les articles en fonction de la sous-catégorie sélectionnée
+  // Filtre les articles en fonction de la sous-catégorie sélectionnée
   const filteredArticles = articles.filter((article) => article.subcategory.id === subCategoryId);
 
   const dispatch = useAppDispatch();
@@ -32,11 +33,11 @@ function SubCategoryList() {
     <div>
       {/* Vérifie si une sous-catégorie est sélectionnée */}
       {selectedSubCategory && (
-        <>
+        <div className='img-container-subCategory'>
           <h2>{selectedSubCategory.name}</h2>
-          <img src={selectedSubCategory.picture.url} alt="" />
+          <img className='img-subCategoryList' src={selectedSubCategory.picture.url} alt="" />
           <p>{selectedSubCategory.description}</p>
-        </>
+        </div>
       )}
       <p>Liste des articles</p>
       {/* Affiche la liste des articles filtrés */}

@@ -2,9 +2,8 @@ import { Route, Routes } from 'react-router-dom';
 import HomePage from '../HomePage/HomePage';
 import ArticleDetailPage from '../HomePage/ArticleDetailPage/ArticleDetailPage';
 import NavBar from '../NavBar/NavBar';
-// import Loading from './App';
 import './App.scss';
-
+import 'semantic-ui-css/semantic.min.css';
 import WikiPage from '../WikiPage/WikiPage';
 import CategoryList from '../WikiPage/CategoryList/CategoryList';
 import SubCategoryList from '../WikiPage/SubCategoryList/SubCategoryList';
@@ -26,9 +25,6 @@ import Error from '../Error/Error';
 
 
 import { useAppSelector } from '../../hooks/redux';
-import Loading from './Loading';
-
-import Quiz from '../GamePage/Quiz/Quiz';
 
 
 
@@ -72,12 +68,7 @@ function App() {
         <Route path="/conditions-utilisations" element={<TermsOfUse />} />
         <Route path="/mentions-legales" element={<LegalNotice />} />
         <Route path="/contact" element={<Contact />} />
-        {/* {!loading && (
-          <>
-            <Loading /> */}
         <Route path="/connexion" element={<ConnectPage />} />
-        {/* </>
-        )} */}
         <Route path="/inscription" element={<RegisterPage />} />
         <Route path="/profil" element={<ProfilePage />} />
         <Route path="/jeux" element={<GamePage />} />

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Button, Segment } from 'semantic-ui-react';
+import { Button, Segment, Message, Card } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import './Quiz.scss';
 import { fetchQuizQuestion } from '../../../store/thunks/quiz';
@@ -20,7 +20,6 @@ function Quiz() {
 
   // Sélection des données du Redux Store
   const questions = useAppSelector((state) => state.quizReducer.quizData);
-  console.log(questions);
   const currentQuestionIndex = useAppSelector(
     (state) => state.quizReducer.currentQuestionIndex
   );
@@ -31,12 +30,12 @@ function Quiz() {
 
   // Sélection de la question actuelle
   const currentQuestion = questions[currentQuestionIndex];
-  console.log(currentQuestion);
   // quizLenght = questions.length;
 
   // Gestion du clic sur le bouton "Question suivante"
   const handleNextQuestionClick = () => {
     console.log(currentQuestionIndex);
+    console.log(currentQuestionIndex >= questions.length - 1);
     if (currentQuestionIndex === questions.length - 1) {
       dispatch(completeQuiz());
     } else {
@@ -63,6 +62,7 @@ function Quiz() {
   };
 
   const handleRestartGame = () => {
+    window.location.reload();
     dispatch(updateUserScore(0));
   };
 
@@ -85,7 +85,7 @@ function Quiz() {
             <Segment className="question">
               <p>{currentQuestion.question}</p>
               {currentQuestion.pictures[0]?.url ? (
-                <img
+                <img className='img-quiz'
                   src={currentQuestion.pictures[0].url}
                   alt={currentQuestion.question}
                 />
@@ -101,37 +101,49 @@ function Quiz() {
               currentQuestion.falseAnswer3,
             ]).map((answer, index) => (
               <div key={index}>
-
                 {/* Bouton de réponse */}
-                <Button
-                  type='submit'
-                  color="green"
-                  className="response-button"
-                  content={String.fromCharCode(65 + index)}
-                  onClick={() => handleResponseClick(answer)}
-                  label={{
-                    basic: true,
-                    color: 'green',
-                    pointing: 'left',
-                    content: answer,
-                  }}
-                />
 
+                <Card onClick={() => handleResponseClick(answer)}>
+                  <Card.Content>
+                    <Card.Header>
+                      {`${String.fromCharCode(65 + index)}`}
+                    </Card.Header>
+                  </Card.Content>
+                  <Card.Content>
+                    <div className="ui two buttons">
+                      <Button basic color="green">
+                      {answer}
+                      </Button>
+                    </div>
+                  </Card.Content>
+                </Card>
               </div>
             ))}
-
           </div>
         </>
       )}
 
       {/* Affichage du score si le quiz est terminé */}
       {quizCompleted && (
-        <>
-          <Segment>Score : {QuizScore}</Segment>
+        <Message positive>
+          Félicitations !<br />
+          <br /> Super travail ! Tu as réussi à compléter le Quiz avec succès !
+          <br />
+          Tu as répondu à toutes les questions de manière fantastique et
+          démontré une connaissance impressionnante.
+          <br />
+          Continue à nourrir ta curiosité et à explorer de nouveaux sujets.
+          <br />
+          <br />
+          Encore une fois, toutes nos félicitations pour cette performance
+          exceptionnelle !
+          <br />
+          <br />
+          Voici ton score : <p>{QuizScore}</p>
           <Button onClick={() => handleRestartGame()}>
             Relancer la partie
           </Button>
-        </>
+        </Message>
       )}
     </div>
   );

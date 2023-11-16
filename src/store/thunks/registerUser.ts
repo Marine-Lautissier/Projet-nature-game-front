@@ -19,6 +19,6 @@ export const fetchRegisterUser = createAsyncThunk('fetchRegisterUser', async (_,
     return result.data;
   } catch (error) {
     // En cas d'erreur, rejette la promesse avec l'erreur
-    // throw error;
+    throw error;
   }
 });

@@ -13,6 +13,7 @@ function NavBar() {
   const logoStyle = {
     width: '50px',
     height: '50px',
+    objectFit : 'cover',
   };
 
   const handleLogout = () => {

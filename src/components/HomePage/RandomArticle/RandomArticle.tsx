@@ -19,14 +19,14 @@ function RandomArticle() {
   console.log(randomArticle);
 
   return (
-    <Container style={{ borderRadius: '55px', border: '4px solid lightgrey' }}>
+    <Container className='container-random-article' style={{ borderRadius: '55px', border: '4px solid lightgrey' }}>
       <Segment padded="very" style={{ background: '#50a060', color: 'white', borderRadius: '55px' }}>
       {randomArticle && (
         // Affichage de l'article
         <div className="article-day" key={randomArticle.id}>
           <h3>Article du jour</h3>
           <h2>{randomArticle.name}</h2>
-          {randomArticle.picture && <img src={randomArticle.picture?.url} alt="Article" />}
+          {randomArticle.picture && <img className='img-random-article' src={randomArticle.picture?.url} alt="Article" />}
           <p>{`${randomArticle.description?.substring(0, 100)}...`}</p>
             <Button style={{ background: 'white', border: '2px solid lightgrey', borderRadius: '25px', color: '#50a060' }} as={Link} to="/wiki/article/random" state={{ articleRandom: randomArticle }}>
             Lire la suite
