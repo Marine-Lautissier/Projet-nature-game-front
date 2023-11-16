@@ -1,14 +1,13 @@
 export interface Quiz {
   question: string;
-  correct_answer: string;
-  false_answer_1: string;
-  false_answer_2: string;
-  false_answer_3: string;
+  correctAnswer: string;
+  falseAnswer1: string;
+  falseAnswer2: string;
+  falseAnswer3: string;
   id: number;
-  picture: {
+  pictures: {
     id: number;
     name: string;
     url: string;
   }
-  question: string;
 }

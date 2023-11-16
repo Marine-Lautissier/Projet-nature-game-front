@@ -1,6 +1,28 @@
 .quiz-container {
   display: flex;
   align-items: center;
+  flex-direction: column;
+  gap: 5rem;
+
+  & .div_responses {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    justify-content: space-evenly;
+  }
+
+  & .question {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    & img {
+      width: 100%;
+      max-width: 800px;
+      height: auto;
+    }
+  }
 }
 h1 {
   display: flex;
