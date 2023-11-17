@@ -17,7 +17,7 @@ function GamePage() {
         eius! Voluptatibus.
       </p>
       <h3>Règles</h3>
-      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nisi nesciunt nam tempore.
+      <p className='rules'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nisi nesciunt nam tempore.
         Molestiae est hic omnis soluta, impedit assumenda similique ipsa minus odio iste voluptates eum quis nam adipisci unde?
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores odit dolor atque distinctio magnam optio mollitia nemo a esse exercitationem? Voluptatibus numquam voluptatem possimus molestiae in nobis mollitia, quidem qui.</p>
       <Button><NavLink className='button-navlink' to={'/jeux/quiz'}>Lancer la partie</NavLink></Button>
