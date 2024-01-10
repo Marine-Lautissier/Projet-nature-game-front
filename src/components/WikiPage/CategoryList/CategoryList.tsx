@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
 import { Card, Image } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
+import './CategoryList.scss'
 import React from 'react';
 import { fetchSubCategories } from '../../../store/thunks/subCategories';
 import { SubCategories } from '../../../@types/wiki';

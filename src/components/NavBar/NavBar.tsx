@@ -4,6 +4,7 @@ import { Menu, Dropdown, Image } from 'semantic-ui-react';
 import logo from '../../assets/logo-site.png';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { logOut } from '../../store/actions/userActions';
+import './NavBar.scss'
 
 function NavBar() {
   const dispatch = useAppDispatch();
@@ -22,7 +23,7 @@ function NavBar() {
   };
 
   return (
-    <Menu>
+    <Menu stackable>
       <Menu.Item>
         <Image src={logo} style={logoStyle} />
       </Menu.Item>
