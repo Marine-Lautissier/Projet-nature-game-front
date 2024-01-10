@@ -1,5 +1,6 @@
 import { Container, Header, Image, Divider } from "semantic-ui-react";
 import 'semantic-ui-css/semantic.min.css';
+import './WikiArticle.scss'
 import { useAppSelector } from "../../../hooks/redux";
 import React from 'react';
 import { useParams } from "react-router-dom";
@@ -27,7 +28,7 @@ function WikiArticle() {
             <Image src={article.picture.url} alt={article.name} />
           </div>
           <Container textAlign="center">
-            <p>{article.description}</p>
+            <p id="text-article">{article.description}</p>
           </Container>
         </Container>
       ))}
