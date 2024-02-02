@@ -1,13 +1,14 @@
-# 🐞  Bienvenue sur ce projet du nom de NatureGame !  🌹
+# 🐞  Bienvenue sur ce projet du nom de NatureGame !  🌹  
 <br/>
 
 Sur ce Repository vous trouverez le code réalisé côté front-end pour ce projet d'équipe.  <img width="90" height="90" align="right" src="https://github.com/Marine-Lautissier/Projet-nature-game-front/assets/132015773/b0d6530d-2114-459d-b11d-e48691f9f123"/>  
+<br/>
 <br/>
 
 ## En quoi consiste-t-il ❔  
 
 Le projet NatureGame a vu le jour afin de permettre à toute personne le souhaitant d'en apprendre plus sur l'environnement.  
-En effet, nous pensons que pour protéger la nature qui nous entoure, il faut d'abord prendre le temps de la connaître et de la comprendre.
+En effet, nous pensons que pour protéger la nature qui nous entoure, il faut d'abord prendre le temps de la connaître et de la comprendre.  
 Notre équipe a alors réalisé cette application permettant aux utilisateurs qui souhaitent en apprendre plus sur la nature, tout en se distrayant, de participer à des jeux de type quiz.  
 Cette application est alimentée d'un quiz contenant des questions et des images associées à quatre réponses aléatoires dont une est la bonne. Ainsi qu'une page d'accueil Wiki afin de favoriser l'accès aux utilisateurs aux informations figurant dans les articles du Wiki qui sont également présentes dans le quiz.  
 <br/>
