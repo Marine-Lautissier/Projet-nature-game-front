@@ -208,7 +208,7 @@ Notre équipe se compose de cinq personnes :
 - [@Lola](https://github.com/Lola-Castan),
 - [@Rosa](https://github.com/RosaBen).
 
-**Deux personnes se sont occupées de la partie Front-end=== du projet :**
+**Deux personnes se sont occupées de la partie Front-end du projet :**
 
 - [@Ismael](https://github.com/ismaelbella),
 - Marine (moi-même).  
